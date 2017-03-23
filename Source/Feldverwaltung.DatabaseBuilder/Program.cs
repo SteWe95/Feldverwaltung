@@ -54,7 +54,7 @@ namespace Feldverwaltung.DatabaseBuilder
             List<Assembly> assemblies = new List<Assembly>();
             string path = (new System.IO.FileInfo(System.Environment.GetCommandLineArgs().First().Trim())).Directory.FullName;
 
-            string[] mappingAssembly = System.IO.Directory.GetFiles(path, "*.mappings.dll");
+            string[] mappingAssembly = System.IO.Directory.GetFiles(path, "*.mapping.dll");
 
             foreach (string assemblyFile in mappingAssembly)
             {

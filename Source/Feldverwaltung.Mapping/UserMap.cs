@@ -6,9 +6,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Feldverwaltung.Mappings
+namespace Feldverwaltung.Mapping
 {
-
     public class UserMap : ClassMap<User>
     {
         public UserMap()
@@ -18,5 +17,4 @@ namespace Feldverwaltung.Mappings
             Map(x => x.Password).Column("C6B6FF669A3865555C737D3414717602");
         }
     }
-
 }
