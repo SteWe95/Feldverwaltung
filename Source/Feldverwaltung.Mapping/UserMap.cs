@@ -15,6 +15,7 @@ namespace Feldverwaltung.Mapping
             Table("C6B6FF669A3865555C737D3414717600");
             Id(x => x.Username).Column("C6B6FF669A3865555C737D3414717601");
             Map(x => x.Password).Column("C6B6FF669A3865555C737D3414717602");
+            References(x => x.Position).Column("C6B6FF669A3865555C737D3414717603");
         }
     }
 }
