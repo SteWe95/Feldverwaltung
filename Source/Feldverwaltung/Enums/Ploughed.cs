@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Feldverwaltung.Domain
 {
-    class Ploughed
+    public enum Ploughed
     {
+        MussGepflügtWerden,
+        Gepflügt1,
+        Gepflügt2,
+        Gepflügt3,
     }
 }

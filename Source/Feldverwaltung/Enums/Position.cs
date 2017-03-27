@@ -6,20 +6,10 @@ using System.Threading.Tasks;
 
 namespace Feldverwaltung.Domain
 {
-    public class Position
+    public enum Position
     {
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-
-        public Position(string name)
-        {
-            Id = Guid.NewGuid();
-            Name = name;
-        }
-
-        public void AddPositions()
-        {
-            
-        }
+        Employee,
+        Disponent,
+        Admin
     }
 }

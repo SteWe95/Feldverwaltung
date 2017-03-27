@@ -52,18 +52,21 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FieldMap.cs" />
+    <Compile Include="TaskDescriptionMap.cs" />
+    <Compile Include="TaskMap.cs" />
     <Compile Include="UserMap.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Feldverwaltung\Feldverwaltung.csproj">
-      <Project>{19a19774-cd2f-4f5f-b8ad-19e3467ac306}</Project>
-      <Name>Feldverwaltung</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="app.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Feldverwaltung\Feldverwaltung.csproj">
+      <Project>{19A19774-CD2F-4F5F-B8AD-19E3467AC306}</Project>
+      <Name>Feldverwaltung</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

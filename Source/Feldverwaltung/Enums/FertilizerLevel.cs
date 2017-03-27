@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace Feldverwaltung.Domain
 {
-    class FertilizerLevel
+    public enum FertilizerLevel
     {
+        Stufe0,
+        Stufe1,
+        Stufe2,
+        Stufe3
     }
 }

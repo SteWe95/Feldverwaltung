@@ -4,12 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Feldverwaltung.Enums
+namespace Feldverwaltung.Auftragsliste
 {
-    public enum Fertilizers
+    public class Class1
     {
-        Kunstdünger,
-        Gülle,
-        Mist
     }
 }

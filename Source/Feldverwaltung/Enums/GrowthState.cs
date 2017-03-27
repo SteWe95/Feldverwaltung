@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Feldverwaltung.Domain
 {
-    class GrowthState
+    public enum GrowthState
     {
+        Gesaeet,
+        Gegrubbert,
+        Gepflügt,
+        Erntreif,
+        Geerntet
     }
 }

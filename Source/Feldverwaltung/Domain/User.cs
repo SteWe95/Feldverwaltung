@@ -12,10 +12,11 @@ namespace Feldverwaltung.Domain
         public string Password { get; set; }
         public Position Position { get; set; }
 
-        public User(string username, string password)
+        public User(string username, string password, Position position)
         {
             Username = username;
             Password = password;
+            Position = position;
         }
     }
 }

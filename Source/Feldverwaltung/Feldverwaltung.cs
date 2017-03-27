@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Feldverwaltung
 {
-    public partial class Form1 : Form
+    public partial class Feldverwaltung : Form
     {
-        public Form1()
+        public Feldverwaltung()
         {
             InitializeComponent();
         }

@@ -15,11 +15,18 @@ namespace Feldverwaltung.Domain
         public FertilizerLevel FertilizerLevel { get; set; }
         public Ploughed Ploughed { get; set; }
 
-        public Field(int number, Fruit fruit, GrowthState growthState, double size, FertilizerLevel fertilizerLevel, Ploughed ploughed)
+        public Field(int number, GrowthState growthState, double size, FertilizerLevel fertilizerLevel, Ploughed ploughed, Fruit fruit) : this(number, growthState, size, fertilizerLevel, ploughed)
+        {
+            Fruit = fruit;
+        }
+
+        public Field(int number, GrowthState growthState, double size, FertilizerLevel fertilizerLevel, Ploughed ploughed)
         {
             Number = number;
-            Fruit = fruit;
-            GrowthState
+            GrowthState = growthState;
+            Size = size;
+            FertilizerLevel = fertilizerLevel;
+            Ploughed = ploughed;
         }
     }
 }
