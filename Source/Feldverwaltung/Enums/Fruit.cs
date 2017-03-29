@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Feldverwaltung.Domain
+namespace Feldverwaltung.Enums
 {
     public enum Fruit
     {
@@ -18,10 +18,7 @@ namespace Feldverwaltung.Domain
         Gras,
         Kartoffeln,
         Zuckerrüben,
-        Stroh,
-        Mist,
-        Gülle,
-        Kunstdünger
+        Stroh
         //TODO: Laden der Früchte passend zur Karte
     }
 }

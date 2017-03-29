@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Feldverwaltung.Domain
+namespace Feldverwaltung.Enums
 {
     public enum JobName
     {
@@ -12,7 +12,7 @@ namespace Feldverwaltung.Domain
         saeen,
         duengen,
         pfluegen,
-        grubbern,
+        Grubbern,
         streuen,
         fahren,
         transportieren,
