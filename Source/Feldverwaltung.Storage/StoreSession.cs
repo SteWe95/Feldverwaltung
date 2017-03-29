@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 
 namespace Feldverwaltung.Storage
 {
-    public class StoreSession
+    public class StoreSession : IDisposable
     {
         public ISession session { get; set; }
         private ITransaction transaction;

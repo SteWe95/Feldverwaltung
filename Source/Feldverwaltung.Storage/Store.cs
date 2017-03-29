@@ -14,13 +14,13 @@ using System.Threading.Tasks;
 
 namespace Feldverwaltung.Storage
 {
-    public class Store : IDisposable
+    public class Store
     {
         public ISessionFactory sessionFactory;
 
         public void Initialize()
         {
-            var assembly = Assembly.Load("MicrosoftSQLDBPerformanceTest.Mappings");
+            var assembly = Assembly.Load("Feldverwaltung.Mapping");
 
             sessionFactory = GetSessionFactory(new Assembly[1] { assembly });
         }
@@ -38,7 +38,7 @@ namespace Feldverwaltung.Storage
             IPersistenceConfigurer config = null;
             config = MsSqlConfiguration.MsSql2005.ConnectionString(x => x.TrustedConnection()
                 .Server(@"WS-415\SPARK")
-                .Database(@"spArkDB")
+                .Database(@"Feldverwaltung")
                 .TrustedConnection())
                 .AdoNetBatchSize(0)
                 .FormatSql()
@@ -53,10 +53,7 @@ namespace Feldverwaltung.Storage
             catch (Exception ex)
             {
                 if (ex.InnerException != null)
-                {
-
                     Console.WriteLine("Error on creating session factory Details: {0}", ex.InnerException.Message);
-                }
                 Console.WriteLine(string.Format("Error on creating session factory Details: {0}", ex.Message));
                 throw;
             }
@@ -72,11 +69,6 @@ namespace Feldverwaltung.Storage
             };
 
             return orderFluentMapping;
-        }
-
-        public void Dispose()
-        {
-            throw new NotImplementedException();
         }
     }
 }
