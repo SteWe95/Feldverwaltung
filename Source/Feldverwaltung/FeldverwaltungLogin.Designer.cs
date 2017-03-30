@@ -1,6 +1,6 @@
 ﻿namespace Feldverwaltung
 {
-    partial class Feldverwaltung
+    partial class FeldverwaltungLogin
     {
         /// <summary>
         /// Required designer variable.

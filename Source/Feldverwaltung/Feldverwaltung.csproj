@@ -57,16 +57,16 @@
     <Compile Include="Domain\TaskDescription.cs" />
     <Compile Include="Enums\Position.cs" />
     <Compile Include="Domain\User.cs" />
-    <Compile Include="Feldverwaltung.cs">
+    <Compile Include="FeldverwaltungLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Feldverwaltung.Designer.cs">
-      <DependentUpon>Feldverwaltung.cs</DependentUpon>
+    <Compile Include="FeldverwaltungLogin.Designer.cs">
+      <DependentUpon>FeldverwaltungLogin.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Feldverwaltung.resx">
-      <DependentUpon>Feldverwaltung.cs</DependentUpon>
+    <EmbeddedResource Include="FeldverwaltungLogin.resx">
+      <DependentUpon>FeldverwaltungLogin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

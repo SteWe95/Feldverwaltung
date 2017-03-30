@@ -16,7 +16,7 @@ namespace Feldverwaltung
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Feldverwaltung());
+            Application.Run(new FeldverwaltungLogin());
         }
     }
 }
