@@ -13,8 +13,8 @@ namespace Feldverwaltung.Auftragsliste
     {
         public int FieldNumber { get; set; }
         public JobName JobName { get; set; }
-        public Fruit FruitName { get; set; }
-        public Fertilizers Fertilizer { get; set; }
+        public Fruit? FruitName { get; set; }
+        public Fertilizers? Fertilizer { get; set; }
         public string Comment { get; set; }
         public string Employee { get; set; }
         public bool Done { get; set; }
@@ -42,7 +42,8 @@ namespace Feldverwaltung.Auftragsliste
 
         public TaskItemModel()
         {
-
+            FruitName = null;
+            Fertilizer = null;
         }
     }
 }
