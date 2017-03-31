@@ -31,7 +31,7 @@ namespace Feldverwaltung.Auftragsliste
 
         public TaskItemModel(Domain.Task task)
         {
-            FieldNumber = task.Field.Number;
+            FieldNumber = task.FieldNumber;
             JobName = task.TaskDescription.JobName;
             FruitName = task.TaskDescription.Fruit;
             Fertilizer = task.TaskDescription.Fertilizer;

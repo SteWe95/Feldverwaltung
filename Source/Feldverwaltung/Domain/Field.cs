@@ -29,5 +29,15 @@ namespace Feldverwaltung.Domain
             FertilizerLevel = fertilizerLevel;
             Ploughed = ploughed;
         }
+
+        public override string ToString()
+        {
+            return "Feldnummer: " + Number +
+                "\r\nFruchtart: " + Fruit + 
+                "\r\nWachstum: " + GrowthState + 
+                "\r\nGröße: " + Size + 
+                "\r\nDüngestufe: " + FertilizerLevel + 
+                "\r\nPflugstatus" + Ploughed;
+        }
     }
 }
