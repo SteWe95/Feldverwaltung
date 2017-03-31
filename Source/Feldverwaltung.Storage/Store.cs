@@ -16,12 +16,11 @@ namespace Feldverwaltung.Storage
 {
     public class Store
     {
-        public ISessionFactory sessionFactory;
+        private ISessionFactory sessionFactory;
 
-        public void Initialize()
+        public Store()
         {
             var assembly = Assembly.Load("Feldverwaltung.Mapping");
-
             sessionFactory = GetSessionFactory(new Assembly[1] { assembly });
         }
 
@@ -43,7 +42,7 @@ namespace Feldverwaltung.Storage
                 .AdoNetBatchSize(0)
                 .FormatSql()
                 .DefaultSchema("dbo");
-            Action<MappingConfiguration> orderFluentMapping = createFluentMapping(mappingAssemblys);
+            Action<MappingConfiguration> orderFluentMapping = CreateFluentMapping(mappingAssemblys);
             try
             {
                 Configuration NHConfig =
@@ -59,7 +58,7 @@ namespace Feldverwaltung.Storage
             }
         }
 
-        private Action<MappingConfiguration> createFluentMapping(IList<Assembly> mappingAssemblys)
+        private Action<MappingConfiguration> CreateFluentMapping(IList<Assembly> mappingAssemblys)
         {
             Action<MappingConfiguration> orderFluentMapping = (MappingConfiguration MC) =>
             {

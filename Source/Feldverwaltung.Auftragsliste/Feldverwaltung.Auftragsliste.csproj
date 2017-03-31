@@ -56,6 +56,19 @@
     </StartupObject>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FluentNHibernate, Version=2.0.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\Feldverwaltung\packages\FluentNHibernate.2.0.3.0\lib\net40\FluentNHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=4.0.0.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\Feldverwaltung\packages\Iesi.Collections.4.0.1.4000\lib\net40\Iesi.Collections.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="NHibernate, Version=4.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <HintPath>..\Feldverwaltung\packages\NHibernate.4.1.1.4000\lib\net40\NHibernate.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PropertyChanged, Version=1.52.1.0, Culture=neutral, PublicKeyToken=ee3ee20bcf148ddd, processorArchitecture=MSIL">
       <HintPath>..\Feldverwaltung\packages\PropertyChanged.Fody.1.52.1\lib\netstandard10\PropertyChanged.dll</HintPath>
       <Private>False</Private>
@@ -63,6 +76,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -132,6 +146,14 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Feldverwaltung.Mapping\Feldverwaltung.Mapping.csproj">
+      <Project>{7b9b55b7-0e61-49f7-91a1-1bd0b4889ea3}</Project>
+      <Name>Feldverwaltung.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Feldverwaltung.Storage\Feldverwaltung.Storage.csproj">
+      <Project>{91a9654b-deb1-460b-a88f-e12c6a19bddb}</Project>
+      <Name>Feldverwaltung.Storage</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Feldverwaltung\Feldverwaltung.csproj">
       <Project>{19A19774-CD2F-4F5F-B8AD-19E3467AC306}</Project>
       <Name>Feldverwaltung</Name>

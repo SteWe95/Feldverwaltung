@@ -32,7 +32,17 @@ namespace Feldverwaltung.Auftragsliste
 
         private void LoadTasks()
         {
-            
+            var tasks = controller.LoadTasks();
+            foreach (var task in tasks)
+            {
+                var taskItem = new TaskItemModel(task);
+                Tasks.Add(taskItem);
+            }
+        }
+
+        public void StarTask()
+        {
+
         }
     }
 }

@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feldverwaltung", "Feldverwa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feldverwaltung.Auftragsliste", "..\Feldverwaltung.Auftragsliste\Feldverwaltung.Auftragsliste.csproj", "{746399CF-F1DD-4EFB-AC25-90316DAEA56B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feldverwaltung.AdministrativeClient", "..\Feldverwaltung.AdministrativeClient\Feldverwaltung.AdministrativeClient.csproj", "{7E2B5140-438F-4D7C-B597-D05F23A9A8E8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{746399CF-F1DD-4EFB-AC25-90316DAEA56B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{746399CF-F1DD-4EFB-AC25-90316DAEA56B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{746399CF-F1DD-4EFB-AC25-90316DAEA56B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E2B5140-438F-4D7C-B597-D05F23A9A8E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E2B5140-438F-4D7C-B597-D05F23A9A8E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E2B5140-438F-4D7C-B597-D05F23A9A8E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E2B5140-438F-4D7C-B597-D05F23A9A8E8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
