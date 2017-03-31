@@ -4,11 +4,23 @@
     xmlns:d="http://schemas.microsoft.com/expression/interactivedesigner/2006"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
-    <Style TargetType="Label">
+
+    <Style TargetType="Window">
         <Setter Property="FontFamily" Value="Arial" />
         <Setter Property="FontSize" Value="24" />
     </Style>
+
+    <Style TargetType="Label">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="Margin" Value="5,0,2,0" />
+    </Style>
     <Style TargetType="Button">
+        <Setter Property="FontFamily" Value="Arial" />
+        <Setter Property="FontSize" Value="24" />
+        <Setter Property="Margin" Value="10,2,10,2" />
+    </Style>
+    <Style TargetType="TextBox">
         <Setter Property="FontFamily" Value="Arial" />
         <Setter Property="FontSize" Value="24" />
     </Style>

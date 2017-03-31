@@ -8,6 +8,9 @@
     Title="Feldverwaltung - Auftragsliste"
     Width="1024"
     Height="750"
+    MinWidth="1024"
+    MinHeight="750"
+    FontFamily="Arial"
     mc:Ignorable="d">
     <Window.Resources>
         <ResourceDictionary>
@@ -32,8 +35,8 @@
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="150" />
-                                <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="150" />
+                                <ColumnDefinition Width="250" />
+                                <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
                             <Label
                                 Grid.Row="0"
@@ -53,32 +56,41 @@
                                     Grid.Column="0"
                                     Width="Auto"
                                     Height="Auto"
-                                    Margin="5,0,1,0"
                                     Content="{Binding FruitName}" />
                                 <Label
                                     Grid.Column="0"
                                     Width="Auto"
                                     Height="Auto"
-                                    Margin="5,0,1,0"
                                     Content="{Binding Fertilizer}" />
                                 <Label
                                     Grid.Column="1"
                                     Width="Auto"
                                     Height="Auto"
-                                    Margin="0,0,5,0"
                                     Content="{Binding JobName}" />
                             </Grid>
-                            <Label
-                                Grid.Row="0"
-                                Grid.Column="3"
-                                Width="Auto"
-                                Height="Auto"
-                                Margin="60,0,5,0"
-                                Content="{Binding FieldNumber}" />
+                            <Grid Grid.Row="0" Grid.Column="3">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label
+                                    Grid.Column="0"
+                                    Width="Auto"
+                                    Height="Auto"
+                                    Margin="30,0,5,0"
+                                    Content="Feldnummer:" />
+                                <Label
+                                    Grid.Column="1"
+                                    Width="Auto"
+                                    Height="Auto"
+                                    Margin="10,0,5,0"
+                                    HorizontalAlignment="Left"
+                                    Content="{Binding FieldNumber}" />
+                            </Grid>
                             <Label
                                 Grid.Row="1"
                                 Grid.Column="0"
-                                Grid.ColumnSpan="3"
+                                Grid.ColumnSpan="2"
                                 Width="Auto"
                                 Height="Auto"
                                 Margin="10,0,10,0"
@@ -95,17 +107,26 @@
                                 Content="{Binding Employee}" />
                             <Grid Grid.Row="2" Grid.Column="2">
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="200" />
-                                    <ColumnDefinition Width="200" />
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
                                 <Button
                                     Grid.Column="0"
-                                    Width="Auto"
-                                    Margin="20,0,20,0"
+                                    Width="150"
                                     Content="Annehmen" />
-                                <Label 
+                                <!--<Button.Style>
+                                        <Style TargetType="Button">
+                                            <Style.Triggers>
+                                                <DataTrigger Binding="{Binding Active}" Value="True">
+                                                    <Setter Property="Background" Value="Red" />
+                                                </DataTrigger>
+                                            </Style.Triggers>
+                                        </Style>
+                                    </Button.Style>-->
+                                <Button
                                     Grid.Column="1"
-                                    Content="Fertig"/>
+                                    Width="150"
+                                    Content="Fertig" />
                             </Grid>
                         </Grid>
                     </DockPanel>
@@ -160,6 +181,6 @@
             Height="50"
             Margin="10,0,10,0"
             HorizontalAlignment="Left"
-            Content="Fertig" />
+            Content="Auftrag anlegen" />
     </Grid>
 </Window>

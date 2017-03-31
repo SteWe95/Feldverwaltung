@@ -22,7 +22,7 @@ namespace Feldverwaltung.Auftragsliste
         {
             get
             {
-                if (string.IsNullOrEmpty(Employee) && Done == true)
+                if (string.IsNullOrWhiteSpace(Employee))
                     return false;
                 else
                     return true;
@@ -44,6 +44,7 @@ namespace Feldverwaltung.Auftragsliste
         {
             FruitName = null;
             Fertilizer = null;
+            Employee = " ";
         }
     }
 }
