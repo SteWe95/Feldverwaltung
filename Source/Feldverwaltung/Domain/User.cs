@@ -1,16 +1,13 @@
-﻿using Feldverwaltung.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System;
 
 namespace Feldverwaltung.Domain
 {
     public class User
     {
+        public Guid Id { get; set; }
         public string Username { get; set; }
         public string Password { get; set; }
+        public Guid PositionId { get; set; }
         public Position Position { get; set; }
 
         public User(string username, string password, Position position)
@@ -18,6 +15,10 @@ namespace Feldverwaltung.Domain
             Username = username;
             Password = password;
             Position = position;
+        }
+
+        public User()
+        {
         }
     }
 }

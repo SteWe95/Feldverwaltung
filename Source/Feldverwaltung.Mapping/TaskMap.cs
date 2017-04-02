@@ -11,13 +11,16 @@ namespace Feldverwaltung.Mapping
     {
         public TaskMap()
         {
-            Table("C6B6FF669A3865555C737D3414717611");
-            Id(x => x.Id).Column("C6B6FF669A3865555C737D3414717612").GeneratedBy.Assigned();
-            References(x => x.FieldNumber).Column("C6B6FF669A3865555C737D3414717613");
-            References(x => x.TaskDescription).Column("C6B6FF669A3865555C737D3414717614");
-            Map(x => x.Employee).Column("C6B6FF669A3865555C737D3414717615");
-            Map(x => x.Active).Column("C6B6FF669A3865555C737D3414717616");
-            Map(x => x.Done).Column("C6B6FF669A3865555C737D3414717617");
+            Table("Task");
+            Id(x => x.Id).Column("Id").GeneratedBy.Assigned();
+            Map(x => x.Employee).Column("Employee");
+            Map(x => x.Active).Column("Active");
+            Map(x => x.Done).Column("Done");
+            Map(_ => _.FieldId).Column("FieldId");
+            Map(_ => _.TaskDescriptionId).Column("TaskDescriptionId");
+
+            References(_ => _.Field, "FieldId").Cascade.None();
+            References(_ => _.TaskDescription, "TaskDescriptionId").Cascade.None();
         }
     }
 }

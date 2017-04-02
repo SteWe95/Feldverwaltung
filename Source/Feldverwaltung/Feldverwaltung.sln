@@ -4,6 +4,10 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feldverwaltung.DatabaseBuilder", "..\Feldverwaltung.DatabaseBuilder\Feldverwaltung.DatabaseBuilder.csproj", "{08C4CCF3-1017-4DF8-BE43-ED5B86E65D32}"
+	ProjectSection(ProjectDependencies) = postProject
+		{19A19774-CD2F-4F5F-B8AD-19E3467AC306} = {19A19774-CD2F-4F5F-B8AD-19E3467AC306}
+		{7B9B55B7-0E61-49F7-91A1-1BD0B4889EA3} = {7B9B55B7-0E61-49F7-91A1-1BD0B4889EA3}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feldverwaltung.Mapping", "..\Feldverwaltung.Mapping\Feldverwaltung.Mapping.csproj", "{7B9B55B7-0E61-49F7-91A1-1BD0B4889EA3}"
 EndProject

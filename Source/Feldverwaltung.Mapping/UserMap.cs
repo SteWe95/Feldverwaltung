@@ -12,10 +12,13 @@ namespace Feldverwaltung.Mapping
     {
         public UserMap()
         {
-            Table("C6B6FF669A3865555C737D3414717600");
-            Id(x => x.Username).Column("C6B6FF669A3865555C737D3414717601");
-            Map(x => x.Password).Column("C6B6FF669A3865555C737D3414717602");
-            Map(x => x.Position).Column("C6B6FF669A3865555C737D3414717603");
+            Table("Employee");
+            Id(_ => _.Id).Column("Id");
+            Map(_ => _.Username).Column("UserName");
+            Map(_ => _.Password).Column("Password");
+            Map(_ => _.PositionId).Column("PositionId");
+
+            References(_ => _.Position, "PositionId").Cascade.None();
         }
     }
 }

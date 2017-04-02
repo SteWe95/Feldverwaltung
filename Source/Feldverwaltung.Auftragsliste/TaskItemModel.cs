@@ -1,10 +1,5 @@
-﻿using Feldverwaltung.Enums;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PropertyChanged;
+﻿using PropertyChanged;
+using Feldverwaltung.Domain;
 
 namespace Feldverwaltung.Auftragsliste
 {
@@ -12,9 +7,9 @@ namespace Feldverwaltung.Auftragsliste
     public class TaskItemModel
     {
         public int FieldNumber { get; set; }
-        public JobName JobName { get; set; }
-        public Fruit? FruitName { get; set; }
-        public Fertilizers? Fertilizer { get; set; }
+        public Job Job { get; set; }
+        public string FruitName { get; set; }
+        public Fertilizers Fertilizer { get; set; }
         public string Comment { get; set; }
         public string Employee { get; set; }
         public bool Done { get; set; }
@@ -31,9 +26,9 @@ namespace Feldverwaltung.Auftragsliste
 
         public TaskItemModel(Domain.Task task)
         {
-            FieldNumber = task.FieldNumber;
-            JobName = task.TaskDescription.JobName;
-            FruitName = task.TaskDescription.Fruit;
+            FieldNumber = task.Field.Number;
+            Job = task.TaskDescription.JobName;
+            FruitName = task.TaskDescription.Fruit.FruitName;
             Fertilizer = task.TaskDescription.Fertilizer;
             Comment = task.TaskDescription.Comment;
             Employee = task.Employee;

@@ -1,10 +1,5 @@
 ﻿using Feldverwaltung.Domain;
 using FluentNHibernate.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Feldverwaltung.Mapping
 {
@@ -12,11 +7,16 @@ namespace Feldverwaltung.Mapping
     {
         public TaskDescriptionMap()
         {
-            Table("C6B6FF669A3865555C737D3414717618");
-            Id(x => x.Id).Column("C6B6FF669A3865555C737D3414717619").GeneratedBy.Assigned();
-            References(x => x.Fruit).Column("C6B6FF669A3865555C737D3414717620");
-            References(x => x.JobName).Column("C6B6FF669A3865555C737D3414717621");
-            Map(x => x.Comment).Column("C6B6FF669A3865555C737D3414717622");
+            Table("TaskDescription");
+            Id(x => x.Id).Column("Id").GeneratedBy.Assigned();
+            Map(_ => _.FruitId).Column("FruitId");
+            Map(_ => _.FertilizerId).Column("FertilizerId");
+            Map(_ => _.JobNameId).Column("JobNameId");
+            Map(x => x.Comment).Column("Comment");
+
+            References(_ => _.Fruit, "FruitId").Cascade.None();
+            References(_ => _.Fertilizer, "FertilizerId").Cascade.None();
+            References(_ => _.JobName, "JobNameId").Cascade.None();
         }
     }
 }

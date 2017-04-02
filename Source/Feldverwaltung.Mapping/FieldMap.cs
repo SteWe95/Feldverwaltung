@@ -1,10 +1,5 @@
 ﻿using Feldverwaltung.Domain;
 using FluentNHibernate.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Feldverwaltung.Mapping
 {
@@ -12,13 +7,18 @@ namespace Feldverwaltung.Mapping
     {
         public FieldMap()
         {
-            Table("C6B6FF669A3865555C737D3414717604");
-            Id(x => x.Number).Column("C6B6FF669A3865555C737D3414717605");
-            Map(x => x.Fruit).Column("C6B6FF669A3865555C737D3414717606");
-            Map(x => x.GrowthState).Column("C6B6FF669A3865555C737D3414717607");
-            Map(x => x.Size).Column("C6B6FF669A3865555C737D3414717608");
-            Map(x => x.FertilizerLevel).Column("C6B6FF669A3865555C737D3414717609");
-            Map(x => x.Ploughed).Column("C6B6FF669A3865555C737D3414717610");
+            Table("Field");
+            Id(x => x.Number).Column("FieldNumber");
+            Map(_ => _.FruitId).Column("FruitId");
+            Map(_ => _.GrowthId).Column("GrowthStateId");
+            Map(_ => _.Size).Column("Size");
+            Map(_ => _.FertilizerId).Column("FertilizerLevelId");
+            Map(_ => _.PloughedId).Column("PloughedId");
+
+            References(_ => _.Fruit, "FruitId").Cascade.None();
+            References(_ => _.GrowthState, "GrowthStateId").Cascade.None();
+            References(_ => _.FertilizerLevel, "FertilizerLevelId").Cascade.None();
+            References(_ => _.PloughedState, "PloughedId").Cascade.None();
         }
     }
 }

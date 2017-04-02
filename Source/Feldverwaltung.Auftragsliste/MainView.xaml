@@ -118,11 +118,10 @@
                                     Content="Annehmen">
                                     <i:Interaction.Triggers>
                                         <i:EventTrigger EventName="Click">
-                                            <ei:ChangePropertyAction PropertyName="SelectedTask"
-                                                             TargetObject="{Binding DataContext,
-                                                                                    RelativeSource={RelativeSource FindAncestor,
-                                                                                                                   AncestorType={x:Type Window}}}"
-                                                             Value="{Binding}" />
+                                            <ei:ChangePropertyAction
+                                                PropertyName="SelectedTask"
+                                                TargetObject="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}"
+                                                Value="{Binding}" />
                                             <ei:CallMethodAction MethodName="StartTask" TargetObject="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>

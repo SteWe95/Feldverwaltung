@@ -46,16 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Enums\FertilizerLevel.cs" />
+    <Compile Include="Domain\Fertilizer.cs" />
+    <Compile Include="Domain\Fertilizers.cs" />
+    <Compile Include="Domain\Fruit.cs" />
+    <Compile Include="Domain\Growth.cs" />
     <Compile Include="Domain\Field.cs" />
-    <Compile Include="Enums\Fertilizers.cs" />
-    <Compile Include="Enums\Fruit.cs" />
-    <Compile Include="Enums\GrowthState.cs" />
-    <Compile Include="Enums\JobName.cs" />
-    <Compile Include="Enums\Ploughed.cs" />
+    <Compile Include="Domain\Job.cs" />
+    <Compile Include="Domain\Ploughed.cs" />
+    <Compile Include="Domain\Position.cs" />
     <Compile Include="Domain\Task.cs" />
     <Compile Include="Domain\TaskDescription.cs" />
-    <Compile Include="Enums\Position.cs" />
     <Compile Include="Domain\User.cs" />
     <Compile Include="FeldverwaltungLogin.cs">
       <SubType>Form</SubType>

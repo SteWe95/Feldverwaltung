@@ -1,5 +1,4 @@
-﻿using Feldverwaltung.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,26 +9,31 @@ namespace Feldverwaltung.Domain
     public class Task
     {
         public Guid Id { get; set; }
-        public int FieldNumber { get; set; }                                                                                
+        public int FieldId { get; set; }
+        public Field Field { get; set; }
+        public Guid TaskDescriptionId { get; set; }
         public TaskDescription TaskDescription { get; set; }
         public string Employee { get; set; }
         public bool Active { get; set; }
         public bool Done { get; set; }
 
-        public Task(int fieldNumber, JobName jobName, Fruit fruit)
+        public Task(int fieldNumber, Job jobName, Fruit fruit)
         {
-            FieldNumber = fieldNumber;
+            Field.Number = fieldNumber;
             TaskDescription = new TaskDescription(fruit, jobName);
             Active = false;
             Done = false;
         }
 
-        public Task(int fieldNumber, JobName jobName, Fruit fruit, string comment)
+        public Task(int fieldNumber, Job jobName, Fruit fruit, string comment)
         {
-            FieldNumber = fieldNumber;
+            Field.Number = fieldNumber;
             TaskDescription = new TaskDescription(fruit, jobName, comment);
             Active = false;
             Done = false;
+        }
+        public Task()
+        {
         }
     }
 }
