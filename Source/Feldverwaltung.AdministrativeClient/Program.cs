@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Feldverwaltung.Storage;
 using Feldverwaltung.Domain;
-using Feldverwaltung.Enums;
+using System.Collections;
 
 namespace Feldverwaltung.AdministrativeClient
 {
@@ -18,11 +18,12 @@ namespace Feldverwaltung.AdministrativeClient
             do
             {
                 Console.WriteLine("Select Command");
-                Console.WriteLine("a) Create field");
-                Console.WriteLine("b) Create task");
-                Console.WriteLine("c) Create many fields");
-                Console.WriteLine("d) Create many tasks");
-                Console.WriteLine("e) Add Fruits");
+                Console.WriteLine("a) Create static Values");
+                Console.WriteLine("b) Create field");
+                Console.WriteLine("c) Create task");
+                Console.WriteLine("d) Create many fields");
+                Console.WriteLine("e) Create many tasks");
+                Console.WriteLine("f) Add Fruits");
                 Console.WriteLine("q) Quit");
                 Console.WriteLine();
                 key = default(ConsoleKeyInfo);
@@ -30,19 +31,22 @@ namespace Feldverwaltung.AdministrativeClient
                 switch (key.KeyChar)
                 {
                     case 'a':
-                        CreateNewField();
+                        CreateStaticValues();
                         break;
                     case 'b':
-                        CreateNewTask();
+                        //CreateNewField();
                         break;
                     case 'c':
-                        CreateManyFields();
+                        //CreateNewTask();
                         break;
                     case 'd':
-                        CreateManyTasks();
+                        //CreateManyFields();
                         break;
                     case 'e':
-                        AddFruits();
+                        //CreateManyTasks();
+                        break;
+                    case 'f':
+                        //AddFruits();
                         break;
                     default:
                         break;
@@ -50,7 +54,91 @@ namespace Feldverwaltung.AdministrativeClient
             } while (key.KeyChar != 'q');
         }
 
-        private static void AddFruits()
+        private static void CreateStaticValues()
+        {
+            var fruits = new List<Fruit>();
+            fruits.Add(new Fruit("Sonnenblumen"));
+            fruits.Add(new Fruit("Sojabohnen"));
+            fruits.Add(new Fruit("Raps"));
+            fruits.Add(new Fruit("Mais"));
+            fruits.Add(new Fruit("Gerste"));
+            fruits.Add(new Fruit("Weizen"));
+            fruits.Add(new Fruit("Oelrettich"));
+            fruits.Add(new Fruit("Gras"));
+            fruits.Add(new Fruit("Kartoffeln"));
+            fruits.Add(new Fruit("Zuckerrüben"));
+            fruits.Add(new Fruit("Stroh"));
+            SaveListInDatabase(fruits);
+
+            var growthStates = new List<Growth>();
+            growthStates.Add(new Growth("Gesaeet"));
+            growthStates.Add(new Growth("Gegrubert"));
+            growthStates.Add(new Growth("Gepfluegt"));
+            growthStates.Add(new Growth("Erntereif"));
+            growthStates.Add(new Growth("Geerntet"));
+            SaveListInDatabase(growthStates);
+
+            var fertilizerLevels = new List<Fertilizer>();
+            fertilizerLevels.Add(new Fertilizer("Stufe0"));
+            fertilizerLevels.Add(new Fertilizer("Stufe1"));
+            fertilizerLevels.Add(new Fertilizer("Stufe2"));
+            fertilizerLevels.Add(new Fertilizer("Stufe3"));
+            SaveListInDatabase(fertilizerLevels);
+
+            var ploughedStates = new List<Ploughed>();
+            ploughedStates.Add(new Ploughed("MussGepfluegtWerden"));
+            ploughedStates.Add(new Ploughed("Gepfluegt1"));
+            ploughedStates.Add(new Ploughed("Gepfluegt2"));
+            ploughedStates.Add(new Ploughed("Gepfluegt3"));
+            SaveListInDatabase(ploughedStates);
+
+            var fertilizers = new List<Fertilizers>();
+            fertilizers.Add(new Fertilizers("Kunstdünger"));
+            fertilizers.Add(new Fertilizers("Guelle"));
+            fertilizers.Add(new Fertilizers("Mist"));
+            SaveListInDatabase(fertilizers);
+
+            var jobs = new List<Job>();
+            jobs.Add(new Job("drillen"));
+            jobs.Add(new Job("saeen"));
+            jobs.Add(new Job("duengen"));
+            jobs.Add(new Job("Pfluegen"));
+            jobs.Add(new Job("Grubbern"));
+            jobs.Add(new Job("streuen"));
+            jobs.Add(new Job("fahren"));
+            jobs.Add(new Job("transportieren"));
+            jobs.Add(new Job("abfahren"));
+            jobs.Add(new Job("ernten"));
+            jobs.Add(new Job("maehen"));
+            jobs.Add(new Job("sammeln"));
+            jobs.Add(new Job("schwaden"));
+            jobs.Add(new Job("zettern"));
+            jobs.Add(new Job("pressen"));
+            SaveListInDatabase(jobs);
+
+            var positions = new List<Position>();
+            positions.Add(new Position("Employee"));
+            positions.Add(new Position("Disponent"));
+            positions.Add(new Position("Admin"));
+            SaveListInDatabase(positions);
+        }
+
+        private static void SaveListInDatabase(object collection)
+        {
+            Store store = new Store();
+            using (StoreSession session = store.GetStoreSession())
+            {
+                session.BeginTransaction();
+                IList objectList = collection as IList;
+                foreach (var item in objectList)
+                {
+                    session.Save(item);
+                }
+                session.CommitTransaction();
+            }
+        }
+
+        /*private static void AddFruits()
         {
             Store store = new Store();
             IList<Fruit> fruits = new List<Fruit>();
@@ -107,7 +195,7 @@ namespace Feldverwaltung.AdministrativeClient
             }
             for (int i = 0; i < fruits.Length; i++)
             {
-                Console.WriteLine("Nummer: " + i +  " Frucht: " + fruits[i].ToString());
+                Console.WriteLine("Nummer: " + i + " Frucht: " + fruits[i].ToString());
             }
             var fruitNumber = int.Parse(GetUserInput("Neue Frucht:"));
             //TODO: Auflistung Jobnames
@@ -173,6 +261,6 @@ namespace Feldverwaltung.AdministrativeClient
         {
             Console.WriteLine(query);
             return Console.ReadLine();
-        }
+        }*/
     }
 }
