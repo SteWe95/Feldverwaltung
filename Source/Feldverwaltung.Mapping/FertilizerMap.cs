@@ -14,9 +14,9 @@ namespace Feldverwaltung.Mapping
         {
             Table("Fertilizer");
             Id(x => x.Id).Column("Id").GeneratedBy.Assigned();
-            Map(x => x.FertilizerLevel).Column("Fertilizer");
+            Map(x => x.FertilizerLevel).Column("FertilizerLevel");
 
-            HasMany(_ => _.Fields).KeyColumn("FertilizerId").Inverse().Cascade.All();
+            HasMany(_ => _.Fields).KeyColumn("FertilizerLevelId").Inverse().Cascade.All();
         }
     }
 }

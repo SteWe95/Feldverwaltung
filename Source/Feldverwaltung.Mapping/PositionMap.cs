@@ -16,7 +16,7 @@ namespace Feldverwaltung.Mapping
             Id(x => x.Id).Column("Id").GeneratedBy.Assigned();
             Map(x => x.PositionName).Column("PositionName");
 
-            HasMany(_ => _.Users).KeyColumn("UserId").Inverse().Cascade.All();
+            //HasMany(_ => _.Users).KeyColumn("UserId").Inverse().Cascade.All();
         }
     }
 }

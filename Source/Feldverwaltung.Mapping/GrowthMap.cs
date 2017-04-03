@@ -12,7 +12,7 @@ namespace Feldverwaltung.Mapping
     {
         public GrowthMap()
         {
-            Table("GrowthState");
+            Table("Growth");
             Id(x => x.Id).Column("Id").GeneratedBy.Assigned();
             Map(x => x.GrowthState).Column("GrowthState");
 

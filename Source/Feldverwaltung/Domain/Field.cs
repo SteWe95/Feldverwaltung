@@ -14,23 +14,23 @@ namespace Feldverwaltung.Domain
         public Guid GrowthId { get; set; }
         public Growth GrowthState { get; set; }
         public double Size { get; set; }
-        public Guid FertilizerId { get; set; }
+        public Guid FertilizerLevelId { get; set; }
         public Fertilizer FertilizerLevel { get; set; }
-        public Guid PloughedId { get; set; }
+        public Guid PloughedStateId { get; set; }
         public Ploughed PloughedState { get; set; }
 
-        public Field(int number, Growth growthState, double size, Fertilizer fertilizerLevel, Ploughed ploughed, Fruit fruit) : this(number, growthState, size, fertilizerLevel, ploughed)
+        public Field(int number, Guid growthId, double size, Guid fertilizerLevelId, Guid ploughedId, Guid fruitId) : this(number, growthId, size, fertilizerLevelId, ploughedId)
         {
-            Fruit = fruit;
+            FruitId = fruitId;
         }
 
-        public Field(int number, Growth growthState, double size, Fertilizer fertilizerLevel, Ploughed ploughed)
+        public Field(int number, Guid growthId, double size, Guid fertilizerLevelId, Guid ploughedId)
         {
             Number = number;
-            GrowthState = growthState;
+            GrowthId = growthId;
             Size = size;
-            FertilizerLevel = fertilizerLevel;
-            PloughedState = ploughed;
+            FertilizerLevelId = fertilizerLevelId;
+            PloughedStateId = ploughedId;
         }
         public Field()
         {
@@ -39,11 +39,11 @@ namespace Feldverwaltung.Domain
         public override string ToString()
         {
             return "Feldnummer: " + Number +
-                "\r\nFruchtart: " + Fruit +
-                "\r\nWachstum: " + GrowthState +
+                "\r\nFruchtart: " + Fruit.ToString() +
+                "\r\nWachstum: " + GrowthState.ToString() +
                 "\r\nGröße: " + Size +
-                "\r\nDüngestufe: " + FertilizerLevel +
-                "\r\nPflugstatus" + PloughedState;
+                "\r\nDüngestufe: " + FertilizerLevel.ToString() +
+                "\r\nPflugstatus: " + PloughedState.ToString();
         }
     }
 }

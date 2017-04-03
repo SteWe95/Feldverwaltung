@@ -17,13 +17,14 @@ namespace Feldverwaltung.AdministrativeClient
             ConsoleKeyInfo key;
             do
             {
+                Console.Clear();
                 Console.WriteLine("Select Command");
                 Console.WriteLine("a) Create static Values");
                 Console.WriteLine("b) Create field");
                 Console.WriteLine("c) Create task");
                 Console.WriteLine("d) Create many fields");
                 Console.WriteLine("e) Create many tasks");
-                Console.WriteLine("f) Add Fruits");
+                Console.WriteLine("f) ");
                 Console.WriteLine("q) Quit");
                 Console.WriteLine();
                 key = default(ConsoleKeyInfo);
@@ -34,7 +35,7 @@ namespace Feldverwaltung.AdministrativeClient
                         CreateStaticValues();
                         break;
                     case 'b':
-                        //CreateNewField();
+                        CreateNewField();
                         break;
                     case 'c':
                         //CreateNewTask();
@@ -46,7 +47,6 @@ namespace Feldverwaltung.AdministrativeClient
                         //CreateManyTasks();
                         break;
                     case 'f':
-                        //AddFruits();
                         break;
                     default:
                         break;
@@ -68,6 +68,7 @@ namespace Feldverwaltung.AdministrativeClient
             fruits.Add(new Fruit("Kartoffeln"));
             fruits.Add(new Fruit("Zuckerrüben"));
             fruits.Add(new Fruit("Stroh"));
+            fruits.Add(new Fruit(""));
             SaveListInDatabase(fruits);
 
             var growthStates = new List<Growth>();
@@ -123,6 +124,95 @@ namespace Feldverwaltung.AdministrativeClient
             SaveListInDatabase(positions);
         }
 
+
+
+        /*
+
+        private static void CreateManyTasks()
+        {
+            throw new NotImplementedException();
+        }
+
+        private static void CreateManyFields()
+        {
+            throw new NotImplementedException();
+        }
+        */
+        private static void CreateNewTask()
+        {
+            var tasks = LoadTableFromDatabase<Domain.Task>();
+            Console.WriteLine("Offene Aufträge");
+            foreach (var task in tasks)
+            {
+                if (!task.Done)
+                {
+                    Console.WriteLine(task.ToString());
+                }
+            }
+
+            var fieldNumber = int.Parse(GetUserInput("Feldnummer:"));
+
+            var fruits = LoadTableFromDatabase<Fruit>();
+            WriteListToConsole<Fruit>(fruits, "Frucht");
+
+            //var fruitNumber = int.Parse(GetUserInput("Neue Frucht:"));
+            ////TODO: Auflistung Jobnames
+            //var jobName = (JobName)int.Parse(GetUserInput("Aufgabe:"));
+            //var comment = GetUserInput("Auftragskommentar:");
+
+            //Domain.Task newTask = new Domain.Task(fieldNumber, jobName, fruits[fruitNumber], comment);
+
+            //using (StoreSession session = store.GetStoreSession())
+            //{
+            //    session.BeginTransaction();
+            //    session.Save(newTask);
+            //    session.CommitTransaction();
+            //    session.Close();
+            //}
+        }
+
+        private static void CreateNewField()
+        {
+            Console.Clear();
+            var fields = LoadTableFromDatabase<Field>();
+            fields.OrderBy(_ => _.Number);
+            foreach (var field in fields)
+            {
+                Console.WriteLine(field.ToString());
+            }
+
+            var number = int.Parse(GetUserInput("Feldnummer:"));
+
+            Fruit[] fruits = LoadTableFromDatabase<Fruit>();
+            WriteListToConsole<Fruit>(fruits, "Frucht");
+            var fruitNumber = int.Parse(GetUserInput("Aktuelle Frucht:"));
+
+            Growth[] growthStates = LoadTableFromDatabase<Growth>();
+            WriteListToConsole<Growth>(growthStates, "Wachstumsstufen");
+            var growthStateNumber = int.Parse(GetUserInput("Aktuelles Wachstum:"));
+
+            var size = double.Parse(GetUserInput("Feldgröße:"));
+
+            Fertilizer[] fertilizerLevels = LoadTableFromDatabase<Fertilizer>();
+            WriteListToConsole<Fertilizer>(fertilizerLevels, "Düngestufe");
+            var fertilizerLevelNumber = int.Parse(GetUserInput("Aktuelle Düngestufe:"));
+
+            Ploughed[] ploughedStates = LoadTableFromDatabase<Ploughed>();
+            WriteListToConsole<Ploughed>(ploughedStates, "Pflugstatus");
+            var ploughedStateNumber = int.Parse(GetUserInput("Gepflügt"));
+
+            Field newField = new Field(number, growthStates[growthStateNumber].Id, size, fertilizerLevels[fertilizerLevelNumber].Id, ploughedStates[ploughedStateNumber].Id, fruits[fruitNumber].Id);
+
+            Store store = new Store();
+            using (StoreSession session = store.GetStoreSession())
+            {
+                session.BeginTransaction();
+                session.Save(newField);
+                session.CommitTransaction();
+                session.Close();
+            }
+        }
+
         private static void SaveListInDatabase(object collection)
         {
             Store store = new Store();
@@ -138,122 +228,23 @@ namespace Feldverwaltung.AdministrativeClient
             }
         }
 
-        /*private static void AddFruits()
+        private static T[] LoadTableFromDatabase<T>()
         {
             Store store = new Store();
-            IList<Fruit> fruits = new List<Fruit>();
             using (StoreSession session = store.GetStoreSession())
             {
-                fruits = session.LoadAll<Fruit>();
-            }
-            foreach (var fruit in fruits)
-            {
-                fruit.ToString();
+                return session.LoadAll<T>().ToArray();
             }
 
-            var fruitName = GetUserInput("Fruitname:");
-
-            Fruit newFruit = new Fruit(fruitName);
-
-            using (StoreSession session = store.GetStoreSession())
-            {
-                session.BeginTransaction();
-                session.Save(newFruit);
-                session.CommitTransaction();
-                session.Close();
-            }
         }
 
-        private static void CreateManyTasks()
+        private static void WriteListToConsole<T>(object[] objectArray, string query)
         {
-            throw new NotImplementedException();
-        }
 
-        private static void CreateManyFields()
-        {
-            throw new NotImplementedException();
-        }
-
-        private static void CreateNewTask()
-        {
-            Store store = new Store();
-            IList<Domain.Task> tasks = new List<Domain.Task>();
-            using (StoreSession session = store.GetStoreSession())
+            T[] arr = objectArray as T[];
+            for (int i = 0; i < arr.Length; i++)
             {
-                tasks = session.LoadAll<Domain.Task>();
-            }
-            foreach (var task in tasks)
-            {
-                task.ToString();
-            }
-
-            var fieldNumber = int.Parse(GetUserInput("Feldnummer:"));
-            Fruit[] fruits;
-            using (StoreSession session = store.GetStoreSession())
-            {
-                fruits = session.LoadAll<Fruit>().ToArray();
-            }
-            for (int i = 0; i < fruits.Length; i++)
-            {
-                Console.WriteLine("Nummer: " + i + " Frucht: " + fruits[i].ToString());
-            }
-            var fruitNumber = int.Parse(GetUserInput("Neue Frucht:"));
-            //TODO: Auflistung Jobnames
-            var jobName = (JobName)int.Parse(GetUserInput("Aufgabe:"));
-            var comment = GetUserInput("Auftragskommentar:");
-
-            Domain.Task newTask = new Domain.Task(fieldNumber, jobName, fruits[fruitNumber], comment);
-
-            using (StoreSession session = store.GetStoreSession())
-            {
-                session.BeginTransaction();
-                session.Save(newTask);
-                session.CommitTransaction();
-                session.Close();
-            }
-        }
-
-        private static void CreateNewField()
-        {
-            Store store = new Store();
-            List<Field> fields = new List<Field>();
-            using (StoreSession session = store.GetStoreSession())
-            {
-                session.LoadAll<Field>();
-            }
-            fields.OrderBy(_ => _.Number);
-            foreach (var field in fields)
-            {
-                field.ToString();
-            }
-
-            var number = int.Parse(GetUserInput("Feldnummer:"));
-            Fruit[] fruits;
-            using (StoreSession session = store.GetStoreSession())
-            {
-                fruits = session.LoadAll<Fruit>().ToArray();
-            }
-            for (int i = 0; i < fruits.Length; i++)
-            {
-                Console.WriteLine("Nummer: " + i + " Frucht: " + fruits[i].ToString());
-            }
-            var fruitNumber = int.Parse(GetUserInput("Neue Frucht:"));
-            //TODO: Auflistung der Zustände
-            var growthState = (GrowthState)int.Parse(GetUserInput("Aktuelles Wachstum:"));
-            var size = double.Parse(GetUserInput("Feldgröße:"));
-            //TODO: Auflistung der Düngestufen
-            var fertilizerLevel = (FertilizerLevel)int.Parse(GetUserInput("Aktuelle Düngestufe:"));
-            //TODO: Auflistung gepflügt
-            var ploughed = (Ploughed)int.Parse(GetUserInput("Gepflügt"));
-
-            Field newField = new Field(number, growthState, size, fertilizerLevel, ploughed, fruits[fruitNumber]);
-
-            using (StoreSession session = store.GetStoreSession())
-            {
-                session.BeginTransaction();
-                session.Save(newField);
-                session.CommitTransaction();
-                session.Close();
+                Console.WriteLine("Nummer: " + i + " " + query + ": " + arr[i].ToString());
             }
         }
 
@@ -261,6 +252,6 @@ namespace Feldverwaltung.AdministrativeClient
         {
             Console.WriteLine(query);
             return Console.ReadLine();
-        }*/
+        }
     }
 }
