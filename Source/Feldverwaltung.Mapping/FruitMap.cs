@@ -16,8 +16,8 @@ namespace Feldverwaltung.Mapping
             Id(x => x.Id).Column("Id").GeneratedBy.Assigned();
             Map(x => x.FruitName).Column("FruitName");
 
-            HasMany(_ => _.Fields).KeyColumn("FruitId").Inverse().Cascade.All();
-            HasMany(_ => _.TaskDescriptions).KeyColumn("TaskDescriptionId").Cascade.All();
+            HasMany(_ => _.Fields).KeyColumn("Id");
+            HasMany(_ => _.TaskDescriptions).KeyColumn("Id");
         }
     }
 }

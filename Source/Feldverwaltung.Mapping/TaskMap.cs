@@ -16,11 +16,9 @@ namespace Feldverwaltung.Mapping
             Map(x => x.Employee).Column("Employee");
             Map(x => x.Active).Column("Active");
             Map(x => x.Done).Column("Done");
-            Map(_ => _.FieldId).Column("FieldId");
-            Map(_ => _.TaskDescriptionId).Column("TaskDescriptionId");
 
-            References(_ => _.Field, "FieldId").Cascade.None();
-            References(_ => _.TaskDescription, "TaskDescriptionId").Cascade.None();
+            References(_ => _.Field, "FieldId").Cascade.All();
+            References(_ => _.TaskDescription, "TaskDescriptionId").Cascade.All();
         }
     }
 }

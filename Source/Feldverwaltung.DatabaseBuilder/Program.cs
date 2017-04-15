@@ -19,8 +19,8 @@ namespace Feldverwaltung.DatabaseBuilder
             var updateOnly = AskForUpdateOnly();
             var deleteOnly = AskForDeleteOnly(updateOnly);
             var assemblyList = GetAssembliesFromExecutingFolder();
-            var config = MsSqlConfiguration.MsSql2005.ConnectionString(x => x.TrustedConnection().Server(@"WS-415-PRE\SPARK").Database(@"Feldverwaltung").TrustedConnection()).AdoNetBatchSize(0).FormatSql().DefaultSchema("dbo");
-            //var config = MsSqlConfiguration.MsSql2005.ConnectionString(x => x.TrustedConnection().Server(@"DESKTOP-10FNRS7\SQLEXPRESS").Database(@"Feldverwaltung").TrustedConnection()).AdoNetBatchSize(0).FormatSql().DefaultSchema("dbo");
+            //var config = MsSqlConfiguration.MsSql2005.ConnectionString(x => x.TrustedConnection().Server(@"WS-415-PRE\SPARK").Database(@"Feldverwaltung").TrustedConnection()).AdoNetBatchSize(0).FormatSql().DefaultSchema("dbo");
+            var config = MsSqlConfiguration.MsSql2005.ConnectionString(x => x.TrustedConnection().Server(@"DESKTOP-10FNRS7\SQLEXPRESS").Database(@"Feldverwaltung").TrustedConnection()).AdoNetBatchSize(0).FormatSql().DefaultSchema("dbo");
             Action<MappingConfiguration> orderFluentMapping = createFluentMapping(assemblyList);
             Fluently.Configure().Database(config).Mappings(orderFluentMapping).ExposeConfiguration(
                 delegate (Configuration cfg)

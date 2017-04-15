@@ -11,7 +11,7 @@ namespace Feldverwaltung.Domain
         public int Number { get; set; }
         public Guid FruitId { get; set; }
         public Fruit Fruit { get; set; }
-        public Guid GrowthId { get; set; }
+        public Guid GrowthStateId { get; set; }
         public Growth GrowthState { get; set; }
         public double Size { get; set; }
         public Guid FertilizerLevelId { get; set; }
@@ -27,7 +27,7 @@ namespace Feldverwaltung.Domain
         public Field(int number, Guid growthId, double size, Guid fertilizerLevelId, Guid ploughedId)
         {
             Number = number;
-            GrowthId = growthId;
+            GrowthStateId = growthId;
             Size = size;
             FertilizerLevelId = fertilizerLevelId;
             PloughedStateId = ploughedId;
