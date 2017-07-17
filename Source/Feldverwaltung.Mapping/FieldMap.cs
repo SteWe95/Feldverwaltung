@@ -10,11 +10,15 @@ namespace Feldverwaltung.Mapping
             Table("Field");
             Id(x => x.Number).Column("FieldNumber");
             Map(_ => _.Size).Column("Size");
+            Map(_ => _.FruitId).Column("FruitId");
+            Map(_ => _.GrowthStateId).Column("GrowthStateId");
+            Map(_ => _.FertilizerLevelId).Column("FertilizerLevelId");
+            Map(_ => _.PloughedStateId).Column("PloughedStateId");
 
-            References(_ => _.Fruit).Column("FruitId").Cascade.All();
-            References(_ => _.GrowthState).Column("GrowthStateId").Cascade.All();
-            References(_ => _.FertilizerLevel).Column("FertilizerLevelId").Cascade.All();
-            References(_ => _.PloughedState).Column("PloughedStateId").Cascade.All();
+            //References(_ => _.Fruit).Column("FruitId").ReadOnly();
+            //References(_ => _.GrowthState).Column("GrowthStateId").ReadOnly();
+            //References(_ => _.FertilizerLevel).Column("FertilizerLevelId").ReadOnly();
+            //References(_ => _.PloughedState).Column("PloughedStateId").ReadOnly();
         }
     }
 }

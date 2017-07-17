@@ -16,7 +16,7 @@ namespace Feldverwaltung.Mapping
             Id(x => x.Id).Column("Id").GeneratedBy.Assigned();
             Map(x => x.PloughedState).Column("PloughedState");
 
-            HasMany(_ => _.Fields).KeyColumn("Id");
+            HasMany(_ => _.Fields).KeyColumn("PloughedStateId").Cascade.AllDeleteOrphan().Inverse().Fetch.Join().AsSet();
         }
     }
 }

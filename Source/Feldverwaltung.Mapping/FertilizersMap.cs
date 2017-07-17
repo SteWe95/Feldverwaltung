@@ -16,7 +16,7 @@ namespace Feldverwaltung.Mapping
             Id(x => x.Id).Column("Id").GeneratedBy.Assigned();
             Map(x => x.Name).Column("FertilizerName");
 
-            HasMany(_ => _.Tasks).KeyColumn("Id");
+            HasMany(_ => _.Tasks).KeyColumn("Id").Cascade.AllDeleteOrphan().Inverse().Fetch.Join().AsSet();
         }
     }
 }

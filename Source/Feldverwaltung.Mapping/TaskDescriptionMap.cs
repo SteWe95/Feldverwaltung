@@ -11,9 +11,9 @@ namespace Feldverwaltung.Mapping
             Id(x => x.Id).Column("Id").GeneratedBy.Assigned();
             Map(x => x.Comment).Column("Comment");
 
-            References(_ => _.Fruit, "FruitId").Cascade.All();
-            References(_ => _.Fertilizer, "FertilizerId").Cascade.All();
-            References(_ => _.JobName, "JobNameId").Cascade.All();
+            //References(_ => _.Fruit, "FruitId").Cascade.All();
+            //References(_ => _.Fertilizer, "FertilizerId").Cascade.All();
+            //References(_ => _.JobName, "JobNameId").Cascade.All();
         }
     }
 }

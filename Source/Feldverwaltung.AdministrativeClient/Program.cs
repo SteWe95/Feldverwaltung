@@ -38,7 +38,7 @@ namespace Feldverwaltung.AdministrativeClient
                         CreateNewField();
                         break;
                     case 'c':
-                        //CreateNewTask();
+                        CreateNewTask();
                         break;
                     case 'd':
                         //CreateManyFields();
@@ -150,25 +150,35 @@ namespace Feldverwaltung.AdministrativeClient
                 }
             }
 
+            Field[] fields = LoadTableFromDatabase<Field>();
+            fields.OrderBy(_ => _.Number);
+            foreach (var field in fields)
+            {
+                Console.WriteLine(field.ToString());
+            }
             var fieldNumber = int.Parse(GetUserInput("Feldnummer:"));
 
-            var fruits = LoadTableFromDatabase<Fruit>();
+            Fruit[] fruits = LoadTableFromDatabase<Fruit>();
             WriteListToConsole<Fruit>(fruits, "Frucht");
+            var fruitNumber = int.Parse(GetUserInput("Neue Frucht:"));
 
-            //var fruitNumber = int.Parse(GetUserInput("Neue Frucht:"));
-            ////TODO: Auflistung Jobnames
-            //var jobName = (JobName)int.Parse(GetUserInput("Aufgabe:"));
-            //var comment = GetUserInput("Auftragskommentar:");
 
-            //Domain.Task newTask = new Domain.Task(fieldNumber, jobName, fruits[fruitNumber], comment);
+            Job[] jobs = LoadTableFromDatabase<Job>();
+            WriteListToConsole<Job>(jobs, "Aufgabe");
+            var jobNumber = int.Parse(GetUserInput("Aufgabe:"));
 
-            //using (StoreSession session = store.GetStoreSession())
-            //{
-            //    session.BeginTransaction();
-            //    session.Save(newTask);
-            //    session.CommitTransaction();
-            //    session.Close();
-            //}
+            var comment = GetUserInput("Auftragskommentar:");
+
+            Domain.Task newTask = new Domain.Task(fieldNumber, jobs[jobNumber], fruits[fruitNumber], comment);
+
+            Store store = new Store();
+            using (StoreSession session = store.GetStoreSession())
+            {
+                session.BeginTransaction();
+                session.Save(newTask);
+                session.CommitTransaction();
+                session.Close();
+            }
         }
 
         private static void CreateNewField()

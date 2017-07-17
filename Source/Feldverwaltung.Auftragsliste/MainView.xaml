@@ -112,7 +112,7 @@
                                     <ColumnDefinition Width="*" />
                                     <ColumnDefinition Width="*" />
                                 </Grid.ColumnDefinitions>
-                                <Button
+                                <!--<Button
                                     Grid.Column="0"
                                     Width="150"
                                     Content="Annehmen">
@@ -125,16 +125,16 @@
                                             <ei:CallMethodAction MethodName="StartTask" TargetObject="{Binding DataContext, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type Window}}}" />
                                         </i:EventTrigger>
                                     </i:Interaction.Triggers>
-                                </Button>
+                                </Button>-->
                                 <!--<Button.Style>
-                                        <Style TargetType="Button">
-                                            <Style.Triggers>
-                                                <DataTrigger Binding="{Binding Active}" Value="True">
-                                                    <Setter Property="Background" Value="Red" />
-                                                </DataTrigger>
-                                            </Style.Triggers>
-                                        </Style>
-                                    </Button.Style>-->
+                                    <Style TargetType="Button">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Active}" Value="True">
+                                                <Setter Property="Background" Value="Red" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Button.Style>-->
                                 <Button
                                     Grid.Column="1"
                                     Width="150"

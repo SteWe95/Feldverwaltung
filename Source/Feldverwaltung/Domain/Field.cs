@@ -10,14 +10,11 @@ namespace Feldverwaltung.Domain
     {
         public int Number { get; set; }
         public Guid FruitId { get; set; }
-        public Fruit Fruit { get; set; }
         public Guid GrowthStateId { get; set; }
-        public Growth GrowthState { get; set; }
         public double Size { get; set; }
         public Guid FertilizerLevelId { get; set; }
-        public Fertilizer FertilizerLevel { get; set; }
         public Guid PloughedStateId { get; set; }
-        public Ploughed PloughedState { get; set; }
+
 
         public Field(int number, Guid growthId, double size, Guid fertilizerLevelId, Guid ploughedId, Guid fruitId) : this(number, growthId, size, fertilizerLevelId, ploughedId)
         {
@@ -36,14 +33,14 @@ namespace Feldverwaltung.Domain
         {
         }
 
-        public override string ToString()
-        {
-            return "Feldnummer: " + Number +
-                "\r\nFruchtart: " + Fruit.ToString() +
-                "\r\nWachstum: " + GrowthState.ToString() +
-                "\r\nGröße: " + Size +
-                "\r\nDüngestufe: " + FertilizerLevel.ToString() +
-                "\r\nPflugstatus: " + PloughedState.ToString();
-        }
+        //public override string ToString()
+        //{
+        //    return "Feldnummer: " + Number +
+        //        "\r\nFruchtart: " + Fruit.ToString() +
+        //        "\r\nWachstum: " + GrowthState.ToString() +
+        //        "\r\nGröße: " + Size +
+        //        "\r\nDüngestufe: " + FertilizerLevel.ToString() +
+        //        "\r\nPflugstatus: " + PloughedState.ToString();
+        //}
     }
 }
