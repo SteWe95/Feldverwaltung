@@ -10,7 +10,7 @@ namespace Feldverwaltung.Domain
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
-        public IList<Task> Tasks { get; set; }
+        public ICollection<Task> Tasks { get; set; }
 
         public Job(string jobName)
         {

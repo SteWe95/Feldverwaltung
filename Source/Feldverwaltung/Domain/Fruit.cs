@@ -10,9 +10,9 @@ namespace Feldverwaltung.Domain
     {
         public Guid Id { get; set; }
         public string FruitName { get; set; }
-        public IList<Field> Fields { get; set; }
+        public ICollection<Field> Fields { get; set; }
 
-        public IList<TaskDescription> TaskDescriptions { get; set; }
+        public ICollection<TaskDescription> TaskDescriptions { get; set; }
 
         public Fruit(string fruitName)
         {

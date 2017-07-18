@@ -10,25 +10,23 @@ namespace Feldverwaltung.Domain
     {
         public Guid Id { get; set; }
         public int FieldId { get; set; }
-        public Field Field { get; set; }
         public Guid TaskDescriptionId { get; set; }
-        public TaskDescription TaskDescription { get; set; }
         public string Employee { get; set; }
         public bool Active { get; set; }
         public bool Done { get; set; }
 
         public Task(int fieldNumber, Job jobName, Fruit fruit)
         {
-            Field.Number = fieldNumber;
-            TaskDescription = new TaskDescription(fruit, jobName);
+            FieldId = fieldNumber;
+            //TaskDescription = new TaskDescription(fruit, jobName);
             Active = false;
             Done = false;
         }
 
         public Task(int fieldNumber, Job jobName, Fruit fruit, string comment)
         {
-            Field.Number = fieldNumber;
-            TaskDescription = new TaskDescription(fruit, jobName, comment);
+            FieldId = fieldNumber;
+            //TaskDescription = new TaskDescription(fruit, jobName, comment);
             Active = false;
             Done = false;
         }

@@ -10,9 +10,9 @@ namespace Feldverwaltung.Domain
     {
         public Guid Id { get; set; }
         public string PositionName { get; set; }
-        public IList<Field> Users { get; set; }
+        public ICollection<Field> Users { get; set; }
 
-        public IList<TaskDescription> TaskDescriptions { get; set; }
+        public ICollection<TaskDescription> TaskDescriptions { get; set; }
 
         public Position(string positionName)
         {

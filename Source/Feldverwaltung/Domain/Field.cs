@@ -33,14 +33,21 @@ namespace Feldverwaltung.Domain
         {
         }
 
-        //public override string ToString()
-        //{
-        //    return "Feldnummer: " + Number +
-        //        "\r\nFruchtart: " + Fruit.ToString() +
-        //        "\r\nWachstum: " + GrowthState.ToString() +
-        //        "\r\nGröße: " + Size +
-        //        "\r\nDüngestufe: " + FertilizerLevel.ToString() +
-        //        "\r\nPflugstatus: " + PloughedState.ToString();
-        //}
+        private Fruit GetFruit(int number)
+        {
+            Array values = Enum.GetValues(typeof(Fruit));
+            Fruit fruit = (Fruit)values.GetValue(number);
+            return fruit;
+        }
+
+        public override string ToString()
+        {
+            return "Feldnummer: " + Number +
+                   "\r\nFruchtart: " + FruitId +
+                    "\r\nWachstum: " + GrowthStateId +
+                   "\r\nGröße: " + Size +
+                "\r\nDüngestufe: " + FertilizerLevelId +
+                "\r\nPflugstatus: " + PloughedStateId;
+        }
     }
 }

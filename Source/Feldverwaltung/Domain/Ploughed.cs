@@ -10,7 +10,7 @@ namespace Feldverwaltung.Domain
     {
         public Guid Id { get; set; }
         public string PloughedState { get; set; }
-        public IList<Field> Fields { get; set; }
+        public ICollection<Field> Fields { get; set; }
 
         public Ploughed(string ploughedState)
         {

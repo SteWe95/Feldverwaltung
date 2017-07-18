@@ -10,7 +10,7 @@ namespace Feldverwaltung.Domain
     {
         public Guid Id { get; set; }
         public string FertilizerLevel { get; set; }
-        public IList<Field> Fields { get; set; }
+        public ICollection<Field> Fields { get; set; }
 
         public Fertilizer(string fertilizerLevel)
         {

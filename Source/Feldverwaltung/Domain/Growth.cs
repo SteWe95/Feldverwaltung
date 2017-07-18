@@ -10,7 +10,7 @@ namespace Feldverwaltung.Domain
     {
         public Guid Id { get; set; }
         public string GrowthState { get; set; }
-        public IList<Field> Fields { get; set; }
+        public ICollection<Field> Fields { get; set; }
 
         public Growth(string growthState)
         {
