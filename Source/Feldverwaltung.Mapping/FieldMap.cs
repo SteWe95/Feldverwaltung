@@ -7,14 +7,14 @@ namespace Feldverwaltung.Mapping
     {
         public FieldMap()
         {
-            Table("Field");
-            Id(x => x.Number).Column("FieldNumber");
-            Map(_ => _.Size).Column("Size");
+            Id(x => x.Id).GeneratedBy.HiLo("10");
+            Map(_ => _.Number).Unique().Not.Nullable();
+            Map(_ => _.Size);
 
-            References(_ => _.Fruit).Column("FruitId").Cascade.All();
-            References(_ => _.GrowthState).Column("GrowthStateId").Cascade.All();
-            References(_ => _.FertilizerLevel).Column("FertilizerLevelId").Cascade.All();
-            References(_ => _.PloughedState).Column("PloughedStateId").Cascade.All();
+            HasOne<Fruit>(_ => _.Fruit);
+            HasOne<Growth>(_ => _.GrowthState);
+            HasOne<Fertilizer>(_ => _.FertilizerLevel);
+            HasOne<Ploughed>(_ => _.PloughedState);
         }
     }
 }

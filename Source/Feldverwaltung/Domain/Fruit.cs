@@ -8,19 +8,16 @@ namespace Feldverwaltung.Domain
 {
     public class Fruit
     {
-        public Guid Id { get; set; }
-        public string FruitName { get; set; }
-        public IList<Field> Fields { get; set; }
+        public virtual int Id { get; set; }
+        public virtual string FruitName { get; set; }
+        public virtual ICollection<Field> Fields { get; set; }
 
-        public IList<TaskDescription> TaskDescriptions { get; set; }
+        public virtual ICollection<TaskDescription> TaskDescriptions { get; set; }
 
-        public Fruit(string fruitName)
-        {
-            Id = Guid.NewGuid();
-            FruitName = fruitName;
-        }
         public Fruit()
         {
+            Fields = new HashSet<Field>();
+            TaskDescriptions = new HashSet<TaskDescription>();
         }
 
         public override string ToString()

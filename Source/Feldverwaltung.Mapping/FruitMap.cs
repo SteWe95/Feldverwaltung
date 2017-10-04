@@ -12,12 +12,11 @@ namespace Feldverwaltung.Mapping
     {
         public FruitMap()
         {
-            Table("Fruit");
-            Id(x => x.Id).Column("Id").GeneratedBy.Assigned();
-            Map(x => x.FruitName).Column("FruitName");
+            Id(x => x.Id).GeneratedBy.HiLo("5");
+            Map(x => x.FruitName).Unique().Not.Nullable();
 
-            HasMany(_ => _.Fields).KeyColumn("Id");
-            HasMany(_ => _.TaskDescriptions).KeyColumn("Id");
+            HasMany<Field>(_ => _.Fields).Inverse();
+            HasMany<TaskDescription>(_ => _.TaskDescriptions).Inverse();
         }
     }
 }

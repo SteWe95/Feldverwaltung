@@ -8,14 +8,11 @@ namespace Feldverwaltung.Domain
 {
     public class TaskDescription
     {
-        public Guid Id { get; set; }
-        public Guid FruitId { get; set; }
-        public Fruit Fruit { get; set; }
-        public Guid FertilizerId { get; set; }
-        public Fertilizers Fertilizer { get; set; }
-        public Guid JobNameId { get; set; }
-        public Job JobName { get; set; }
-        public string Comment { get; set; }
+        public virtual int Id { get; set; }
+        public virtual string Comment { get; set; }
+        public virtual Fruit Fruit { get; set; }
+        public virtual Fertilizers Fertilizer { get; set; }
+        public virtual Job JobName { get; set; }
 
         public TaskDescription(Fruit fruit, Job jobName)
         {

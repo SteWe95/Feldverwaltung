@@ -8,17 +8,13 @@ namespace Feldverwaltung.Domain
 {
     public class Growth
     {
-        public Guid Id { get; set; }
-        public string GrowthState { get; set; }
-        public IList<Field> Fields { get; set; }
+        public virtual int Id { get; set; }
+        public virtual string GrowthState { get; set; }
+        public virtual ICollection<Field> Fields { get; set; }
 
-        public Growth(string growthState)
-        {
-            Id = Guid.NewGuid();
-            GrowthState = growthState;
-        }
         public Growth()
         {
+            Fields = new HashSet<Field>();
         }
 
         public override string ToString()
