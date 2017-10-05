@@ -57,33 +57,33 @@ namespace Feldverwaltung.AdministrativeClient
         private static void CreateStaticValues()
         {
             var fruits = new List<Fruit>();
-            fruits.Add(new Fruit("Sonnenblumen"));
-            fruits.Add(new Fruit("Sojabohnen"));
-            fruits.Add(new Fruit("Raps"));
-            fruits.Add(new Fruit("Mais"));
-            fruits.Add(new Fruit("Gerste"));
-            fruits.Add(new Fruit("Weizen"));
-            fruits.Add(new Fruit("Oelrettich"));
-            fruits.Add(new Fruit("Gras"));
-            fruits.Add(new Fruit("Kartoffeln"));
-            fruits.Add(new Fruit("Zuckerrüben"));
-            fruits.Add(new Fruit("Stroh"));
-            fruits.Add(new Fruit(""));
+            fruits.Add(new Fruit() { FruitName = "Sonnenblumen" });
+            fruits.Add(new Fruit() { FruitName = "Sojabohnen" });
+            fruits.Add(new Fruit() { FruitName = "Raps" });
+            fruits.Add(new Fruit() { FruitName = "Mais" });
+            fruits.Add(new Fruit() { FruitName = "Gerste" });
+            fruits.Add(new Fruit() { FruitName = "Weizen" });
+            fruits.Add(new Fruit() { FruitName = "Oelrettich" });
+            fruits.Add(new Fruit() { FruitName = "Gras" });
+            fruits.Add(new Fruit() { FruitName = "Kartoffeln" });
+            fruits.Add(new Fruit() { FruitName = "Zuckerrüben" });
+            fruits.Add(new Fruit() { FruitName = "Stroh" });
+            fruits.Add(new Fruit() { FruitName = "" });
             SaveListInDatabase(fruits);
 
             var growthStates = new List<Growth>();
-            growthStates.Add(new Growth("Gesaeet"));
-            growthStates.Add(new Growth("Gegrubert"));
-            growthStates.Add(new Growth("Gepfluegt"));
-            growthStates.Add(new Growth("Erntereif"));
-            growthStates.Add(new Growth("Geerntet"));
+            growthStates.Add(new Growth() { GrowthState = "Gesaeet" });
+            growthStates.Add(new Growth() { GrowthState = "Gegrubbert" });
+            growthStates.Add(new Growth() { GrowthState = "Gepfluegt" });
+            growthStates.Add(new Growth() { GrowthState = "Erntereif" });
+            growthStates.Add(new Growth() { GrowthState = "Geerntet" });
             SaveListInDatabase(growthStates);
 
             var fertilizerLevels = new List<Fertilizer>();
-            fertilizerLevels.Add(new Fertilizer("Stufe0"));
-            fertilizerLevels.Add(new Fertilizer("Stufe1"));
-            fertilizerLevels.Add(new Fertilizer("Stufe2"));
-            fertilizerLevels.Add(new Fertilizer("Stufe3"));
+            fertilizerLevels.Add(new Fertilizer() { FertilizerLevel = "Stufe0" });
+            fertilizerLevels.Add(new Fertilizer() { FertilizerLevel = "Stufe1" });
+            fertilizerLevels.Add(new Fertilizer() { FertilizerLevel = "Stufe2" });
+            fertilizerLevels.Add(new Fertilizer() { FertilizerLevel = "Stufe3" });
             SaveListInDatabase(fertilizerLevels);
 
             var ploughedStates = new List<Ploughed>();
@@ -94,27 +94,27 @@ namespace Feldverwaltung.AdministrativeClient
             SaveListInDatabase(ploughedStates);
 
             var fertilizers = new List<Fertilizers>();
-            fertilizers.Add(new Fertilizers("Kunstdünger"));
-            fertilizers.Add(new Fertilizers("Guelle"));
-            fertilizers.Add(new Fertilizers("Mist"));
+            fertilizers.Add(new Fertilizers() { Name = "Kunstduenger" });
+            fertilizers.Add(new Fertilizers() { Name = "Guelle" });
+            fertilizers.Add(new Fertilizers() { Name = "Mist" });
             SaveListInDatabase(fertilizers);
 
             var jobs = new List<Job>();
-            jobs.Add(new Job("drillen"));
-            jobs.Add(new Job("saeen"));
-            jobs.Add(new Job("duengen"));
-            jobs.Add(new Job("Pfluegen"));
-            jobs.Add(new Job("Grubbern"));
-            jobs.Add(new Job("streuen"));
-            jobs.Add(new Job("fahren"));
-            jobs.Add(new Job("transportieren"));
-            jobs.Add(new Job("abfahren"));
-            jobs.Add(new Job("ernten"));
-            jobs.Add(new Job("maehen"));
-            jobs.Add(new Job("sammeln"));
-            jobs.Add(new Job("schwaden"));
-            jobs.Add(new Job("zettern"));
-            jobs.Add(new Job("pressen"));
+            jobs.Add(new Job() { Name = "drillen" });
+            jobs.Add(new Job() { Name = "saeen" });
+            jobs.Add(new Job() { Name = "duengen" });
+            jobs.Add(new Job() { Name = "pfluegen" });
+            jobs.Add(new Job() { Name = "grubbern" });
+            jobs.Add(new Job() { Name = "streuen" });
+            jobs.Add(new Job() { Name = "fahren" });
+            jobs.Add(new Job() { Name = "transportieren" });
+            jobs.Add(new Job() { Name = "abfahren" });
+            jobs.Add(new Job() { Name = "ernten" });
+            jobs.Add(new Job() { Name = "maehen" });
+            jobs.Add(new Job() { Name = "sammeln" });
+            jobs.Add(new Job() { Name = "schwaden" });
+            jobs.Add(new Job() { Name = "zettern" });
+            jobs.Add(new Job() { Name = "pressen" });
             SaveListInDatabase(jobs);
 
             var positions = new List<Position>();
@@ -211,7 +211,7 @@ namespace Feldverwaltung.AdministrativeClient
             WriteListToConsole<Ploughed>(ploughedStates, "Pflugstatus");
             var ploughedStateNumber = int.Parse(GetUserInput("Gepflügt"));
 
-            Field newField = new Field(number, growthStates[growthStateNumber].Id, size, fertilizerLevels[fertilizerLevelNumber].Id, ploughedStates[ploughedStateNumber].Id, fruits[fruitNumber].Id);
+            Field newField = new Field(number, growthStates[growthStateNumber], size, fertilizerLevels[fertilizerLevelNumber], ploughedStates[ploughedStateNumber], fruits[fruitNumber]);
 
             Store store = new Store();
             using (StoreSession session = store.GetStoreSession())

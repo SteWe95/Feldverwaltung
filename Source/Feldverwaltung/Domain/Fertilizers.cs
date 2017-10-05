@@ -8,17 +8,19 @@ namespace Feldverwaltung.Domain
 {
     public class Fertilizers
     {
+<<<<<<< HEAD
         public Guid Id { get; set; }
         public string Name { get; set; }
         public ICollection<Task> Tasks { get; set; }
+=======
+        public virtual int Id { get; set; }
+        public virtual string Name { get; set; }
+        public virtual ICollection<Task> Tasks { get; set; }
+>>>>>>> origin/develop
 
-        public Fertilizers(string fertilizerName)
-        {
-            Id = Guid.NewGuid();
-            Name = fertilizerName;
-        }
         public Fertilizers()
         {
+
         }
 
         public override string ToString()

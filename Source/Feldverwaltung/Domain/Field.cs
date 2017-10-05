@@ -8,6 +8,7 @@ namespace Feldverwaltung.Domain
 {
     public class Field
     {
+<<<<<<< HEAD
         public int Number { get; set; }
         public Guid FruitId { get; set; }
         public Guid GrowthStateId { get; set; }
@@ -15,19 +16,28 @@ namespace Feldverwaltung.Domain
         public Guid FertilizerLevelId { get; set; }
         public Guid PloughedStateId { get; set; }
 
+=======
+        public virtual int Id { get; set; }
+        public virtual int Number { get; set; }
+        public virtual double Size { get; set; }
+        public virtual Fruit Fruit { get; set; }
+        public virtual Growth GrowthState { get; set; }
+        public virtual Fertilizer FertilizerLevel { get; set; }
+        public virtual Ploughed PloughedState { get; set; }
+>>>>>>> origin/develop
 
-        public Field(int number, Guid growthId, double size, Guid fertilizerLevelId, Guid ploughedId, Guid fruitId) : this(number, growthId, size, fertilizerLevelId, ploughedId)
+        public Field(int number, Growth growth, double size, Fertilizer fertilizerLevel, Ploughed ploughed, Fruit fruit) : this(number, growth, size, fertilizerLevel, ploughed)
         {
-            FruitId = fruitId;
+            Fruit = fruit;
         }
 
-        public Field(int number, Guid growthId, double size, Guid fertilizerLevelId, Guid ploughedId)
+        public Field(int number, Growth growth, double size, Fertilizer fertilizerLevel, Ploughed ploughed)
         {
             Number = number;
-            GrowthStateId = growthId;
+            GrowthState = growth;
             Size = size;
-            FertilizerLevelId = fertilizerLevelId;
-            PloughedStateId = ploughedId;
+            FertilizerLevel = fertilizerLevel;
+            PloughedState = ploughed;
         }
         public Field()
         {
