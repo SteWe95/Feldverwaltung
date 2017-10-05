@@ -8,15 +8,9 @@ namespace Feldverwaltung.Domain
 {
     public class Job
     {
-<<<<<<< HEAD
-        public Guid Id { get; set; }
-        public string Name { get; set; }
-        public ICollection<Task> Tasks { get; set; }
-=======
         public virtual int Id { get; set; }
         public virtual string Name { get; set; }
         public virtual ICollection<Task> Tasks { get; set; }
->>>>>>> origin/develop
 
         public Job()
         {

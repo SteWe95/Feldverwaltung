@@ -87,10 +87,10 @@ namespace Feldverwaltung.AdministrativeClient
             SaveListInDatabase(fertilizerLevels);
 
             var ploughedStates = new List<Ploughed>();
-            ploughedStates.Add(new Ploughed("MussGepfluegtWerden"));
-            ploughedStates.Add(new Ploughed("Gepfluegt1"));
-            ploughedStates.Add(new Ploughed("Gepfluegt2"));
-            ploughedStates.Add(new Ploughed("Gepfluegt3"));
+            ploughedStates.Add(new Ploughed() { PloughedState = "MussGepfluegtWerden" });
+            ploughedStates.Add(new Ploughed() { PloughedState = "Gepfluegt1" });
+            ploughedStates.Add(new Ploughed() { PloughedState = "Gepfluegt2" });
+            ploughedStates.Add(new Ploughed() { PloughedState = "Gepfluegt3" });
             SaveListInDatabase(ploughedStates);
 
             var fertilizers = new List<Fertilizers>();
@@ -118,9 +118,9 @@ namespace Feldverwaltung.AdministrativeClient
             SaveListInDatabase(jobs);
 
             var positions = new List<Position>();
-            positions.Add(new Position("Employee"));
-            positions.Add(new Position("Disponent"));
-            positions.Add(new Position("Admin"));
+            positions.Add(new Position() { PositionName = "Employee" });
+            positions.Add(new Position() { PositionName = "Disponent" });
+            positions.Add(new Position() { PositionName = "Admin" });
             SaveListInDatabase(positions);
         }
 

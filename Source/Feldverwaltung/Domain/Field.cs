@@ -8,15 +8,6 @@ namespace Feldverwaltung.Domain
 {
     public class Field
     {
-<<<<<<< HEAD
-        public int Number { get; set; }
-        public Guid FruitId { get; set; }
-        public Guid GrowthStateId { get; set; }
-        public double Size { get; set; }
-        public Guid FertilizerLevelId { get; set; }
-        public Guid PloughedStateId { get; set; }
-
-=======
         public virtual int Id { get; set; }
         public virtual int Number { get; set; }
         public virtual double Size { get; set; }
@@ -24,7 +15,6 @@ namespace Feldverwaltung.Domain
         public virtual Growth GrowthState { get; set; }
         public virtual Fertilizer FertilizerLevel { get; set; }
         public virtual Ploughed PloughedState { get; set; }
->>>>>>> origin/develop
 
         public Field(int number, Growth growth, double size, Fertilizer fertilizerLevel, Ploughed ploughed, Fruit fruit) : this(number, growth, size, fertilizerLevel, ploughed)
         {
@@ -53,11 +43,11 @@ namespace Feldverwaltung.Domain
         public override string ToString()
         {
             return "Feldnummer: " + Number +
-                   "\r\nFruchtart: " + FruitId +
-                    "\r\nWachstum: " + GrowthStateId +
+                   "\r\nFruchtart: " + Fruit.FruitName +
+                    "\r\nWachstum: " + GrowthState.GrowthState +
                    "\r\nGröße: " + Size +
-                "\r\nDüngestufe: " + FertilizerLevelId +
-                "\r\nPflugstatus: " + PloughedStateId;
+                "\r\nDüngestufe: " + FertilizerLevel.FertilizerLevel +
+                "\r\nPflugstatus: " + PloughedState.PloughedState;
         }
     }
 }
