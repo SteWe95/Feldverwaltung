@@ -11,12 +11,12 @@ namespace Feldverwaltung.Domain
 
         public virtual int Id { get; set; }
         public virtual string PositionName { get; set; }
-        public virtual ICollection<Field> Users { get; set; }
+        public virtual ICollection<User> Users { get; set; }
         public virtual ICollection<TaskDescription> TaskDescriptions { get; set; }
 
         public Position()
         {
-            Users = new HashSet<Field>();
+            Users = new HashSet<User>();
             TaskDescriptions = new HashSet<TaskDescription>();
         }
 

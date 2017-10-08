@@ -19,6 +19,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feldverwaltung.Auftragslist
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feldverwaltung.AdministrativeClient", "..\Feldverwaltung.AdministrativeClient\Feldverwaltung.AdministrativeClient.csproj", "{7E2B5140-438F-4D7C-B597-D05F23A9A8E8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Feldverwaltung.MyDatabaseBuilder", "Feldverwaltung.MyDatabaseBuilder\Feldverwaltung.MyDatabaseBuilder.csproj", "{97E64577-3015-4DB1-AC85-622B161B0CCA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -49,6 +51,10 @@ Global
 		{7E2B5140-438F-4D7C-B597-D05F23A9A8E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7E2B5140-438F-4D7C-B597-D05F23A9A8E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7E2B5140-438F-4D7C-B597-D05F23A9A8E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{97E64577-3015-4DB1-AC85-622B161B0CCA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{97E64577-3015-4DB1-AC85-622B161B0CCA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{97E64577-3015-4DB1-AC85-622B161B0CCA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{97E64577-3015-4DB1-AC85-622B161B0CCA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

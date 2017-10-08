@@ -12,7 +12,7 @@ namespace Feldverwaltung.Domain
         public virtual string Comment { get; set; }
         public virtual Fruit Fruit { get; set; }
         public virtual Fertilizers Fertilizer { get; set; }
-        public virtual Job JobName { get; set; }
+        public virtual Job Job { get; set; }
 
         public TaskDescription(Fruit fruit, Job jobName)
         {

@@ -14,7 +14,7 @@ namespace Feldverwaltung.Domain
 
         public Fertilizers()
         {
-
+            Tasks = new HashSet<Task>();
         }
 
         public override string ToString()

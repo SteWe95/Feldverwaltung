@@ -19,8 +19,8 @@ namespace Feldverwaltung.DatabaseBuilder
             var updateOnly = AskForUpdateOnly();
             var deleteOnly = AskForDeleteOnly(updateOnly);
             var assemblyList = GetAssembliesFromExecutingFolder();
-            var config = MsSqlConfiguration.MsSql2005.ConnectionString(x => x.TrustedConnection().Server(@"WS-415-PRE\SPARK").Database(@"Feldverwaltung").TrustedConnection()).AdoNetBatchSize(0).FormatSql().DefaultSchema("dbo");
-            //var config = MsSqlConfiguration.MsSql2005.ConnectionString(x => x.TrustedConnection().Server(@"DESKTOP-10FNRS7\SQLEXPRESS").Database(@"Feldverwaltung").TrustedConnection()).AdoNetBatchSize(0).FormatSql().DefaultSchema("dbo");
+            //var config = MsSqlConfiguration.MsSql2005.ConnectionString(x => x.TrustedConnection().Server(@"WS-415-PRE\SPARK").Database(@"Feldverwaltung").TrustedConnection()).AdoNetBatchSize(0).FormatSql().DefaultSchema("dbo");
+            var config = MsSqlConfiguration.MsSql2005.ConnectionString(x => x.TrustedConnection().Server(@"DESKTOP-10FNRS7\SQLEXPRESS").Database(@"Feldverwaltung").TrustedConnection()).AdoNetBatchSize(0).FormatSql().DefaultSchema("dbo");
             Action<MappingConfiguration> orderFluentMapping = createFluentMapping(assemblyList);
             Fluently.Configure().Database(config).Mappings(orderFluentMapping).ExposeConfiguration(
                 delegate (Configuration cfg)
@@ -53,9 +53,9 @@ namespace Feldverwaltung.DatabaseBuilder
         private static IList<Assembly> GetAssembliesFromExecutingFolder()
         {
             List<Assembly> assemblies = new List<Assembly>();
-            string path = (new System.IO.FileInfo(System.Environment.GetCommandLineArgs().First().Trim())).Directory.FullName;
+            string path = (new FileInfo(System.Environment.GetCommandLineArgs().First().Trim())).Directory.FullName;
 
-            string[] mappingAssembly = System.IO.Directory.GetFiles(path, "*.mapping.dll");
+            string[] mappingAssembly = Directory.GetFiles(path, "*.mapping.dll");
 
             foreach (string assemblyFile in mappingAssembly)
             {
@@ -79,12 +79,12 @@ namespace Feldverwaltung.DatabaseBuilder
         }
 
 
-        private static void UpdateSchema(NHibernate.Cfg.Configuration cfg)
+        private static void UpdateSchema(Configuration cfg)
         {
             SchemaUpdate SchemaUpdate = new SchemaUpdate(cfg);
             SchemaUpdate.Execute(x =>
             {
-                using (Stream stream = new System.IO.FileStream(getSQLUpdateFileName(), System.IO.FileMode.Append, FileAccess.Write))
+                using (Stream stream = new FileStream(getSQLUpdateFileName(), System.IO.FileMode.Append, FileAccess.Write))
                 {
                     using (StreamWriter streamWriter = new System.IO.StreamWriter(stream))
                     {
@@ -93,12 +93,12 @@ namespace Feldverwaltung.DatabaseBuilder
                 }
             }, true);
         }
-        private static void DeleteSchema(NHibernate.Cfg.Configuration cfg)
+        private static void DeleteSchema(Configuration cfg)
         {
             SchemaExport SchemaExport = new SchemaExport(cfg);
             SchemaExport.SetOutputFile(getSQLCreateFileName()).Execute(true, true, true);
         }
-        private static void CreateSchema(NHibernate.Cfg.Configuration cfg)
+        private static void CreateSchema(Configuration cfg)
         {
             SchemaExport SchemaExport = new SchemaExport(cfg);
             SchemaExport.SetOutputFile(getSQLCreateFileName()).Execute(true, true, false);

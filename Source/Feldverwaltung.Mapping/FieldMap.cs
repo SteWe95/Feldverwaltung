@@ -7,29 +7,14 @@ namespace Feldverwaltung.Mapping
     {
         public FieldMap()
         {
-<<<<<<< HEAD
-            Table("Field");
-            Id(x => x.Number).Column("FieldNumber");
-            Map(_ => _.Size).Column("Size");
-            Map(_ => _.FruitId).Column("FruitId");
-            Map(_ => _.GrowthStateId).Column("GrowthStateId");
-            Map(_ => _.FertilizerLevelId).Column("FertilizerLevelId");
-            Map(_ => _.PloughedStateId).Column("PloughedStateId");
-
-            //References(_ => _.Fruit).Column("FruitId").ReadOnly();
-            //References(_ => _.GrowthState).Column("GrowthStateId").ReadOnly();
-            //References(_ => _.FertilizerLevel).Column("FertilizerLevelId").ReadOnly();
-            //References(_ => _.PloughedState).Column("PloughedStateId").ReadOnly();
-=======
             Id(x => x.Id).GeneratedBy.HiLo("10");
             Map(_ => _.Number).Unique().Not.Nullable();
             Map(_ => _.Size);
 
             HasOne<Fruit>(_ => _.Fruit);
-            HasOne<Growth>(_ => _.GrowthState);
-            HasOne<Fertilizer>(_ => _.FertilizerLevel);
-            HasOne<Ploughed>(_ => _.PloughedState);
->>>>>>> origin/develop
+            //HasOne<Growth>(_ => _.GrowthState);
+            //HasOne<Fertilizer>(_ => _.FertilizerLevel);
+            //HasOne<Ploughed>(_ => _.PloughedState);
         }
     }
 }

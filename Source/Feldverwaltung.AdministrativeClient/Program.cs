@@ -24,7 +24,7 @@ namespace Feldverwaltung.AdministrativeClient
                 Console.WriteLine("c) Create task");
                 Console.WriteLine("d) Create many fields");
                 Console.WriteLine("e) Create many tasks");
-                Console.WriteLine("f) ");
+                Console.WriteLine("f) Testfeld");
                 Console.WriteLine("q) Quit");
                 Console.WriteLine();
                 key = default(ConsoleKeyInfo);
@@ -47,11 +47,19 @@ namespace Feldverwaltung.AdministrativeClient
                         //CreateManyTasks();
                         break;
                     case 'f':
+                        CreateTestFeld();
                         break;
                     default:
                         break;
                 }
             } while (key.KeyChar != 'q');
+        }
+
+        private static void CreateTestFeld()
+        {
+            var fruit = new Fruit() { FruitName = "Gerste" };
+
+            
         }
 
         private static void CreateStaticValues()

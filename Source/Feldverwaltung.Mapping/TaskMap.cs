@@ -11,14 +11,13 @@ namespace Feldverwaltung.Mapping
     {
         public TaskMap()
         {
-            Table("Task");
-            Id(x => x.Id).Column("Id").GeneratedBy.Assigned();
-            Map(x => x.Employee).Column("Employee");
-            Map(x => x.Active).Column("Active");
-            Map(x => x.Done).Column("Done");
+            Id(x => x.Id).GeneratedBy.HiLo("10");
+            Map(x => x.Employee);
+            Map(x => x.Active).Not.Nullable();
+            Map(x => x.Done).Not.Nullable();
 
-            //References(_ => _.Field, "FieldId").Cascade.All();
-            //References(_ => _.TaskDescription, "TaskDescriptionId").Cascade.All();
+            HasOne<Field>(_ => _.Field);
+            HasOne<TaskDescription>(_ => _.TaskDescription);
         }
     }
 }

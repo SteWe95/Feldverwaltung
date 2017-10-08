@@ -12,13 +12,11 @@ namespace Feldverwaltung.Mapping
     {
         public UserMap()
         {
-            Table("Employee");
-            Id(_ => _.Id).Column("Id");
-            Map(_ => _.Username).Column("UserName");
-            Map(_ => _.Password).Column("Password");
-            Map(_ => _.PositionId).Column("PositionId");
+            Id(_ => _.Id).GeneratedBy.HiLo("10");
+            Map(_ => _.Username).Unique().Not.Nullable();
+            Map(_ => _.Password).Unique().Not.Nullable();
 
-            References(_ => _.Position, "PositionId").Cascade.None();
+            HasOne<Position>(_ => _.Position);
         }
     }
 }

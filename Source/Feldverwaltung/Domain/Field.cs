@@ -33,13 +33,6 @@ namespace Feldverwaltung.Domain
         {
         }
 
-        private Fruit GetFruit(int number)
-        {
-            Array values = Enum.GetValues(typeof(Fruit));
-            Fruit fruit = (Fruit)values.GetValue(number);
-            return fruit;
-        }
-
         public override string ToString()
         {
             return "Feldnummer: " + Number +

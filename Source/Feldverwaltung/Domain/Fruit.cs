@@ -13,12 +13,12 @@ namespace Feldverwaltung.Domain
         public virtual string FruitName { get; set; }
         public virtual ICollection<Field> Fields { get; set; }
 
-        public virtual ICollection<TaskDescription> TaskDescriptions { get; set; }
+        //public virtual ICollection<TaskDescription> TaskDescriptions { get; set; }
 
         public Fruit()
         {
             Fields = new HashSet<Field>();
-            TaskDescriptions = new HashSet<TaskDescription>();
+            //TaskDescriptions = new HashSet<TaskDescription>();
         }
 
         public override string ToString()

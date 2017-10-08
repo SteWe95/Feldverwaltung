@@ -7,13 +7,13 @@ namespace Feldverwaltung.Mapping
     {
         public TaskDescriptionMap()
         {
-            Table("TaskDescription");
-            Id(x => x.Id).Column("Id").GeneratedBy.Assigned();
-            Map(x => x.Comment).Column("Comment");
+            Id(x => x.Id).GeneratedBy.HiLo("10");
+            Map(x => x.Comment);
 
-            //References(_ => _.Fruit, "FruitId").Cascade.All();
-            //References(_ => _.Fertilizer, "FertilizerId").Cascade.All();
-            //References(_ => _.JobName, "JobNameId").Cascade.All();
+            HasOne<Fruit>(_ => _.Fruit);
+            HasOne<Fertilizers>(_ => _.Fertilizer);
+            HasOne<Job>(_ => _.Job);
+
         }
     }
 }

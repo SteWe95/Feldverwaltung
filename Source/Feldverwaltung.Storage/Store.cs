@@ -35,20 +35,20 @@ namespace Feldverwaltung.Storage
         private ISessionFactory GetSessionFactory(IList<Assembly> mappingAssemblys)
         {
             IPersistenceConfigurer config = null;
-            config = MsSqlConfiguration.MsSql2005.ConnectionString(x => x.TrustedConnection()
-                .Server(@"WS-415-PRE\SPARK")
-                .Database(@"Feldverwaltung")
-                .TrustedConnection())
-                .AdoNetBatchSize(0)
-                .FormatSql()
-                .DefaultSchema("dbo");
             //config = MsSqlConfiguration.MsSql2005.ConnectionString(x => x.TrustedConnection()
-            //    .Server(@"DESKTOP-10FNRS7\SQLEXPRESS")
+            //    .Server(@"WS-415-PRE\SPARK")
             //    .Database(@"Feldverwaltung")
             //    .TrustedConnection())
             //    .AdoNetBatchSize(0)
             //    .FormatSql()
             //    .DefaultSchema("dbo");
+            config = MsSqlConfiguration.MsSql2005.ConnectionString(x => x.TrustedConnection()
+                .Server(@"DESKTOP-10FNRS7\SQLEXPRESS")
+                .Database(@"Feldverwaltung")
+                .TrustedConnection())
+                .AdoNetBatchSize(0)
+                .FormatSql()
+                .DefaultSchema("dbo");
             Action<MappingConfiguration> orderFluentMapping = CreateFluentMapping(mappingAssemblys);
             try
             {

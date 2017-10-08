@@ -12,11 +12,10 @@ namespace Feldverwaltung.Mapping
     {
         public GrowthMap()
         {
-            Table("Growth");
-            Id(x => x.Id).Column("Id").GeneratedBy.Assigned();
-            Map(x => x.GrowthState).Column("GrowthState");
+            Id(x => x.Id).GeneratedBy.HiLo("10");
+            Map(x => x.GrowthState).Unique().Not.Nullable();
 
-            HasMany(_ => _.Fields).KeyColumn("GrowthStateId").Cascade.AllDeleteOrphan().Inverse().Fetch.Join().AsSet();
+            //HasMany<Field>(_ => _.Fields).Inverse();
         }
     }
 }
