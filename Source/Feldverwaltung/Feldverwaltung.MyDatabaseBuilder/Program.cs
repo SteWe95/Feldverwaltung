@@ -13,13 +13,13 @@ namespace Feldverwaltung.MyDatabaseBuilder
     {
         static void Main(string[] args)
         {
-            var sessionFactory  =  Fluently.Configure()
+            var sessionFactory = Fluently.Configure()
                 .Database(MsSqlConfiguration.MsSql2008
-                .ConnectionString(c=>c.FromConnectionStringWithKey("db")))
-                .Mappings(m=>
+                .ConnectionString(c => c.FromConnectionStringWithKey("db")))
+                .Mappings(m =>
                     {
-                        m.FluentMappings.AddFromAssembly(Assembly.Get)
-                    })
+                        m.FluentMappings.AddFromAssembly(Assembly.Get);
+                    });
         }
     }
 }

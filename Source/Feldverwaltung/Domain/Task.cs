@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Feldverwaltung.Domain
 {
-    public class Task
+    public partial class Task
     {
         public virtual int Id { get; set; }
         public virtual string Employee { get; set; }
@@ -15,12 +16,15 @@ namespace Feldverwaltung.Domain
         public virtual Field Field { get; set; }
         public virtual TaskDescription TaskDescription { get; set; }
 
+        partial void OnCreated();
+
         public Task(int fieldNumber, Job jobName, Fruit fruit)
         {
            
             //TaskDescription = new TaskDescription(fruit, jobName);
             Active = false;
             Done = false;
+            OnCreated();
         }
 
         public Task(int fieldNumber, Job jobName, Fruit fruit, string comment)
@@ -28,9 +32,11 @@ namespace Feldverwaltung.Domain
             //TaskDescription = new TaskDescription(fruit, jobName, comment);
             Active = false;
             Done = false;
+            OnCreated();
         }
         public Task()
         {
+            OnCreated();
         }
     }
 }

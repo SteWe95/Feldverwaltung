@@ -11,13 +11,39 @@ namespace Feldverwaltung.Mapping
     {
         public TaskMap()
         {
-            Id(x => x.Id).GeneratedBy.HiLo("10");
-            Map(x => x.Employee);
+            Table("Task");
+            LazyLoad();
+            Id(x => x.Id)
+                .Column("TaskId")
+                .CustomType("Int32")
+                .Access.Property()
+                .CustomSqlType("INTEGER")
+                .Not.Nullable()
+                .GeneratedBy.HiLo("10");
+            Map(x => x.Employee)
+                .Column("Employee")
+                .CustomType("String")
+                .Access.Property()
+                .Generated.Never()
+                .CustomSqlType("VARCHAR")
+                .Length(50);
             Map(x => x.Active).Not.Nullable();
             Map(x => x.Done).Not.Nullable();
 
-            HasOne<Field>(_ => _.Field);
-            HasOne<TaskDescription>(_ => _.TaskDescription);
+            References(_ => _.Field)
+                .Class<Field>()
+                .Access.Property()
+                .Cascade.None()
+                .LazyLoad()
+                .Columns("FieldId");
+            References(_ => _.TaskDescription)
+                .Class<TaskDescription>()
+                .Access.Property()
+                .Cascade.None()
+                .LazyLoad()
+                .Columns("TaskdescriptionId");
+            //            HasOne<Field>(_ => _.Field);
+            //            HasOne<TaskDescription>(_ => _.TaskDescription);
         }
     }
 }

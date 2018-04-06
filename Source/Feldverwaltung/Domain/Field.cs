@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Feldverwaltung.Domain
 {
-    public class Field
+    public partial class Field
     {
         public virtual int Id { get; set; }
         public virtual int Number { get; set; }
@@ -15,6 +17,9 @@ namespace Feldverwaltung.Domain
         public virtual Growth GrowthState { get; set; }
         public virtual Fertilizer FertilizerLevel { get; set; }
         public virtual Ploughed PloughedState { get; set; }
+        public virtual System.Collections.Generic.HashSet<Task> Tasks { get; set; }
+
+        partial void OnCreated();
 
         public Field(int number, Growth growth, double size, Fertilizer fertilizerLevel, Ploughed ploughed, Fruit fruit) : this(number, growth, size, fertilizerLevel, ploughed)
         {
@@ -28,10 +33,14 @@ namespace Feldverwaltung.Domain
             Size = size;
             FertilizerLevel = fertilizerLevel;
             PloughedState = ploughed;
+            this.Tasks = new System.Collections.Generic.HashSet<Task>();
+            OnCreated();
         }
         public Field()
         {
+            OnCreated();
         }
+      
 
         public override string ToString()
         {
